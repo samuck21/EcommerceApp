@@ -7,14 +7,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.svstudio.eccomerceapp.domain.model.User
+import com.svstudio.eccomerceapp.domain.model.AuthResponse
 import com.svstudio.eccomerceapp.domain.usecase.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.svstudio.eccomerceapp.domain.until.Result
-import retrofit2.Response
+import com.svstudio.eccomerceapp.domain.until.Resource
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel(){
@@ -26,11 +24,11 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
     fun onPasswordInput(password: String){
         state =state.copy(password=password)
     }
-    var loginResponse by mutableStateOf<Result<User>?>(null)
+    var loginResponse by mutableStateOf<Resource<AuthResponse>?>(null)
         private set
     fun login() = viewModelScope.launch {
         if(isValidForm()){
-            loginResponse = Result.Loading
+            loginResponse = Resource.Loading
             val result = authUseCase.login(state.email,state.password)
             loginResponse= result
             Log.d("LoginViewModel","Response:${loginResponse}")

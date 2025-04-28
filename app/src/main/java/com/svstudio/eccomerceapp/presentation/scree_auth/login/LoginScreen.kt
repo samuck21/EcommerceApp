@@ -37,10 +37,12 @@ import com.svstudio.eccomerceapp.R
 import com.svstudio.eccomerceapp.presentation.componets.DefaultTextField
 import com.svstudio.eccomerceapp.presentation.navigation.screen.AuthScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.login.LoginViewModel
+import com.svstudio.eccomerceapp.presentation.scree_auth.login.components.Login
 
 @Composable
 
 fun LoginScreen(navController: NavHostController,viewModel: LoginViewModel=hiltViewModel()){
+    Login(navController = navController)
     var state = viewModel.state
     Image(painter = painterResource(id = R.drawable.banner),
         contentDescription = "Background",

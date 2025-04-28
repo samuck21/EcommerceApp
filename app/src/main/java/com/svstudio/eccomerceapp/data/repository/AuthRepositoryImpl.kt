@@ -1,18 +1,18 @@
 package com.svstudio.eccomerceapp.data.repository
 
 import com.svstudio.eccomerceapp.data.repository.dataSource.AuthRemoteDataSource
-import com.svstudio.eccomerceapp.domain.model.User
+import com.svstudio.eccomerceapp.domain.model.AuthResponse
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
-import com.svstudio.eccomerceapp.domain.until.Result
+import com.svstudio.eccomerceapp.domain.until.Resource
 class AuthRepositoryImpl (private  val authRemoteDataSource: AuthRemoteDataSource): AuthRepository {
-    override suspend fun login(email: String,password : String): Result<User>{
+    override suspend fun login(email: String,password : String): Resource<AuthResponse>{
       return  try {
          val result = authRemoteDataSource.login(email,password)
-         Result.Success(result.body()!!)
+         Resource.Success(result.body()!!)
 
       } catch (e : Exception){
           e.printStackTrace()
-          Result.Failure(e)
+          Resource.Failure(e)
 
       }
     }

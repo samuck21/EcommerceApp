@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.svstudio.eccomerceapp.presentation.navigation.Graph
 import com.svstudio.eccomerceapp.presentation.navigation.screen.AuthScreen
+import com.svstudio.eccomerceapp.presentation.scree_auth.home.HomeScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.login.LoginScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.register.RegisterScreen
 
@@ -19,6 +20,9 @@ fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
         }
         composable( route = AuthScreen.Register.route) {
             RegisterScreen()
+        }
+        composable( route = AuthScreen.Home.route) {
+            HomeScreen(navController)
         }
     }
 }

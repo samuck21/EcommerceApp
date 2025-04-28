@@ -1,5 +1,6 @@
 package com.svstudio.eccomerceapp.data.service
 
+import com.svstudio.eccomerceapp.domain.model.AuthResponse
 import com.svstudio.eccomerceapp.domain.model.User
 import retrofit2.Response
 import retrofit2.http.Field
@@ -12,5 +13,5 @@ interface AuthService {
     suspend fun login(
         @Field("email") email: String,
         @Field("password") password: String,
-    ): Response<User>
+    ): Response<AuthResponse>
 }
