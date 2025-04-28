@@ -14,7 +14,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.svstudio.eccomerceapp.presentation.navigation.graph.RootNavGraph
 import com.svstudio.eccomerceapp.ui.theme.EccomerceAppTheme
-import com.svstudio.eccomerceapp.presentation.scree_auth.RegisterScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
