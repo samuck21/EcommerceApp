@@ -18,6 +18,8 @@ import com.svstudio.eccomerceapp.domain.until.Resource
 class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel(){
     var  state by mutableStateOf(LoginState())
         private set
+    var errorMessage by mutableStateOf("")
+
     fun onEmailInput(email: String){
         state =state.copy(email=email)
     }
@@ -35,6 +37,7 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
         }
 
     }
+
     fun isValidForm(): Boolean {
         if(!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()){
             return false
@@ -44,5 +47,6 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
         return  true
 
     }
+
 
 }

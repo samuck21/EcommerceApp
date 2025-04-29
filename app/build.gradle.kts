@@ -76,6 +76,9 @@ dependencies {
 
     implementation("androidx.datastore:datastore-preferences:1.1.4")
 
+    implementation("com.squareup.moshi:moshi:1.15.2")
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.2")
+
 }
 kapt {
     correctErrorTypes = true

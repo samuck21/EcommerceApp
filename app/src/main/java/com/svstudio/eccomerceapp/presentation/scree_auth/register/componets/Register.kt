@@ -1,4 +1,4 @@
-package com.svstudio.eccomerceapp.presentation.scree_auth.login.components
+package com.svstudio.eccomerceapp.presentation.scree_auth.register.componets
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Box
@@ -11,13 +11,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.svstudio.eccomerceapp.presentation.scree_auth.login.LoginViewModel
-import  com.svstudio.eccomerceapp.domain.until.Resource
+import androidx.navigation.NavHostController
+import com.svstudio.eccomerceapp.domain.until.Resource
 import com.svstudio.eccomerceapp.presentation.navigation.screen.AuthScreen
+import com.svstudio.eccomerceapp.presentation.scree_auth.register.RegisterViewModel
 
 @Composable
-fun Login(navController: NavController,vm: LoginViewModel = hiltViewModel()){
-    when(val response = vm.loginResponse){
+fun Register(navController: NavHostController,vm: RegisterViewModel = hiltViewModel()){
+    when(val response = vm.registerResponse){
         Resource.Loading -> {
             Box(modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center){
@@ -40,9 +41,6 @@ fun Login(navController: NavController,vm: LoginViewModel = hiltViewModel()){
             if(response != null){
                 Toast.makeText(LocalContext.current,"Hubo un error desconocido", Toast.LENGTH_SHORT).show()
             }
-
-        }
-
     }
-
+}
 }

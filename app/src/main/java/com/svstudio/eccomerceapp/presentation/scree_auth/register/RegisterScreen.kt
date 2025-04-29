@@ -1,5 +1,7 @@
 package com.svstudio.eccomerceapp.presentation.scree_auth.register
 
+
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,6 +20,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -28,6 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -35,11 +39,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.svstudio.eccomerceapp.R
 import com.svstudio.eccomerceapp.presentation.componets.DefaultTextField
+import com.svstudio.eccomerceapp.presentation.scree_auth.register.componets.Register
 
 @Composable
-fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()){
+fun RegisterScreen(navController: NavHostController,viewModel: RegisterViewModel = hiltViewModel()){
+    Register(navController)
+    val context = LocalContext.current
+    LaunchedEffect(key1 = viewModel.errorMessage) {
+        Toast.makeText(context,viewModel.errorMessage, Toast.LENGTH_LONG).show()
+        viewModel.errorMessage=""
+    }
 
     Image(painter = painterResource(id = R.drawable.banner),
         contentDescription = "Background",
@@ -68,20 +81,15 @@ fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()){
             )
 
         ) {
-            CardContent()
+            CardContent(viewModel)
 
         }
 
     }
 }
 @Composable
-fun CardContent(){
-    var email by rememberSaveable { mutableStateOf("") }
-    var password by rememberSaveable { mutableStateOf("") }
-    var name by rememberSaveable { mutableStateOf("") }
-    var lastname by rememberSaveable { mutableStateOf("") }
-    var phone by rememberSaveable { mutableStateOf("") }
-    var passwordConfirm by rememberSaveable { mutableStateOf("") }
+fun CardContent(viewModel: RegisterViewModel){
+     var state = viewModel.state
     Column( horizontalAlignment = Alignment.CenterHorizontally) {
         Text("REGISTRARSE", textAlign = TextAlign.Start,
             fontSize = 18.sp,
@@ -89,54 +97,54 @@ fun CardContent(){
             fontWeight = FontWeight.Bold)
         DefaultTextField(
             modifier = Modifier,
-            value = name,
-            onValueChange = {name=it},
+            value = state.name,
+            onValueChange = {viewModel.onNameInput(it)},
             label = "Nombres",
             icon = Icons.Filled.Person,
             keyboardType = KeyboardType.Unspecified
         )
         DefaultTextField(
             modifier = Modifier,
-            value = lastname,
-            onValueChange = {lastname=it},
+            value = state.lastname,
+            onValueChange = {viewModel.onLastNameInput(it)},
             label = "Apellidos",
             icon = Icons.Filled.Person ,
             keyboardType = KeyboardType.Unspecified
         )
         DefaultTextField(
             modifier = Modifier,
-            value = email,
-            onValueChange = {email=it},
+            value = state.email,
+            onValueChange = {viewModel.onEmailInput(it)},
             label = "Correo",
             icon = Icons.Filled.Email,
             keyboardType = KeyboardType.Email
         )
         DefaultTextField(
             modifier = Modifier,
-            value = phone,
-            onValueChange = {phone=it},
+            value = state.phone,
+            onValueChange = {viewModel.onPhoneInput(it)},
             label = "Telefono",
             icon = Icons.Filled.Phone,
             keyboardType = KeyboardType.Phone
         )
         DefaultTextField(
             modifier = Modifier,
-            value = password,
-            onValueChange = {password=it},
+            value = state.password,
+            onValueChange = {viewModel.onPasswordInput(it)},
             label = "Correo",
             icon = Icons.Filled.Lock,
             keyboardType = KeyboardType.Password
         )
         DefaultTextField(
             modifier = Modifier,
-            value = passwordConfirm,
-            onValueChange = {passwordConfirm=it},
+            value = state.confirmPassword,
+            onValueChange = {viewModel.onConfirmPasswordInput(it)},
             label = "Confirmar Contrasena",
             icon = Icons.Filled.Lock,
             keyboardType = KeyboardType.Password
         )
 
-        Button(onClick = {},
+        Button(onClick = {viewModel.register()},
             modifier= Modifier.fillMaxWidth().padding(start = 25.dp, end = 25.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFFF4991A)
