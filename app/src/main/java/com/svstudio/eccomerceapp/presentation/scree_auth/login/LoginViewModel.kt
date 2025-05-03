@@ -13,6 +13,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.svstudio.eccomerceapp.domain.until.Resource
+import com.svstudio.eccomerceapp.presentation.scree_auth.login.components.Login
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel(){
@@ -26,8 +27,26 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
     fun onPasswordInput(password: String){
         state =state.copy(password=password)
     }
+    init {
+        getSessionData()
+    }
     var loginResponse by mutableStateOf<Resource<AuthResponse>?>(null)
         private set
+    fun getSessionData() = viewModelScope.launch {
+        authUseCase.getSessionData().collect { data ->
+            if(data != null){
+                Log.d("LoginViewModel","Data:${data.toJson()}")
+            }else{
+
+                Log.d("LoginViewModel","Null")
+            }
+
+        }
+
+    }
+    fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
+        authUseCase.saveSession(authResponse)
+    }
     fun login() = viewModelScope.launch {
         if(isValidForm()){
             loginResponse = Resource.Loading
@@ -37,6 +56,7 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
         }
 
     }
+
 
     fun isValidForm(): Boolean {
         if(!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()){

@@ -28,7 +28,9 @@ fun Register(navController: NavHostController,vm: RegisterViewModel = hiltViewMo
         }
         is Resource.Success ->{
             LaunchedEffect(Unit) {
-                navController.navigate(route = AuthScreen.Home.route)
+                navController.navigate(route = AuthScreen.Home.route){
+                    popUpTo(AuthScreen.Register.route){inclusive = true}
+                }
             }
 
 
