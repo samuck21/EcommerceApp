@@ -13,6 +13,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.svstudio.eccomerceapp.domain.until.Resource
+import com.svstudio.eccomerceapp.presentation.navigation.Graph
 import com.svstudio.eccomerceapp.presentation.navigation.screen.AuthScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.register.RegisterViewModel
 
@@ -29,11 +30,10 @@ fun Register(navController: NavHostController,vm: RegisterViewModel = hiltViewMo
         is Resource.Success ->{
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
-                /*
-                navController.navigate(route = AuthScreen.Home.route){
 
-                    popUpTo(AuthScreen.Register.route){inclusive = true}
-                }*/
+                navController.navigate(route = Graph.CLIENT){
+                    popUpTo(Graph.ROLES){inclusive = true}
+                }
             }
 
 
