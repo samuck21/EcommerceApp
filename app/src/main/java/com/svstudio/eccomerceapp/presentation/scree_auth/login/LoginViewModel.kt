@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.svstudio.eccomerceapp.domain.until.Resource
 import com.svstudio.eccomerceapp.presentation.scree_auth.login.components.Login
+import com.svstudio.eccomerceapp.presentation.scree_auth.register.RegisterScreen
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel(){
@@ -34,9 +35,8 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
         private set
     fun getSessionData() = viewModelScope.launch {
         authUseCase.getSessionData().collect { data ->
-            if(data != null){
-                Log.d("LoginViewModel","Data:${data.toJson()}")
-            }else{
+            if(!data.token.isNullOrBlank()){
+               loginResponse = Resource.Success(data)
 
                 Log.d("LoginViewModel","Null")
             }

@@ -57,6 +57,9 @@ class RegisterViewModel @Inject constructor(private  val authUseCase: AuthUseCas
     fun onConfirmPasswordInput(input: String){
         state = state.copy(confirmPassword = input)
     }
+    fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
+        authUseCase.saveSession(authResponse)
+    }
     fun isValidForm (): Boolean {
         if(state.name ==""){
             errorMessage = "Ingresa el Nombre"

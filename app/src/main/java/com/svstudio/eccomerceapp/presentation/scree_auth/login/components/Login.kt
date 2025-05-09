@@ -13,6 +13,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.svstudio.eccomerceapp.presentation.scree_auth.login.LoginViewModel
 import  com.svstudio.eccomerceapp.domain.until.Resource
+import com.svstudio.eccomerceapp.presentation.navigation.Graph
 import com.svstudio.eccomerceapp.presentation.navigation.screen.AuthScreen
 
 @Composable
@@ -28,9 +29,19 @@ fun Login(navController: NavController,vm: LoginViewModel = hiltViewModel()){
         is Resource.Success ->{
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
-                navController.navigate(route = AuthScreen.Home.route){
-                    popUpTo(AuthScreen.Login.route){inclusive = true}
+
+
+                if(response.data.user?.roles!!.size > 1 ){
+                    navController.navigate(route = Graph.ROLES){
+                        popUpTo(Graph.ROLES){inclusive = true}
+                    }
+                }else{
+                    navController.navigate(route = Graph.CLIENT){
+                        popUpTo(Graph.ROLES){inclusive = true}
+                    }
                 }
+
+
             }
 
 

@@ -80,9 +80,9 @@ dependencies {
     implementation("com.squareup.moshi:moshi-kotlin:1.15.2")
 
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
-
+    implementation("androidx.navigation:navigation-compose:2.8.4")
     implementation("io.coil-kt.coil3:coil-compose:3.1.0")
-
+    implementation("androidx.compose.material:material:1.8.1")
 }
 kapt {
     correctErrorTypes = true
