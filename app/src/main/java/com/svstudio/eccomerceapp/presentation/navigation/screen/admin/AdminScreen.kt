@@ -1,6 +1,5 @@
-package com.svstudio.eccomerceapp.presentation.navigation.screen
+package com.svstudio.eccomerceapp.presentation.navigation.screen.admin
 
-import android.icu.text.CaseMap
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person

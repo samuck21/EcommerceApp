@@ -6,7 +6,7 @@ import androidx.compose.runtime.*
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.svstudio.eccomerceapp.presentation.navigation.screen.ClientScreen
+import com.svstudio.eccomerceapp.presentation.navigation.screen.client.ClientScreen
 
 @Composable
 fun ClientBottomBar(navController: NavHostController){

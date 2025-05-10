@@ -1,14 +1,15 @@
-package com.svstudio.eccomerceapp.presentation.navigation.graph
+package com.svstudio.eccomerceapp.presentation.navigation.graph.admin
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.svstudio.eccomerceapp.presentation.navigation.Graph
-import com.svstudio.eccomerceapp.presentation.navigation.screen.AdminScreen
+import com.svstudio.eccomerceapp.presentation.navigation.graph.profile.ProfileNavGraph
+import com.svstudio.eccomerceapp.presentation.navigation.screen.admin.AdminScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.category.list.AdminCategoryListScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.list.AdminProductListScreen
-import com.svstudio.eccomerceapp.presentation.scree_auth.profile.ProfileScreen
+import com.svstudio.eccomerceapp.presentation.scree_auth.profile.info.ProfileScreen
 
 @Composable
 fun AdminNavGraph(navController: NavHostController){
@@ -24,7 +25,8 @@ fun AdminNavGraph(navController: NavHostController){
             AdminCategoryListScreen()
         }
         composable (route = AdminScreen.Profile.route) {
-            ProfileScreen()
+            ProfileScreen(navController)
         }
+        ProfileNavGraph(navController)
     }
 }

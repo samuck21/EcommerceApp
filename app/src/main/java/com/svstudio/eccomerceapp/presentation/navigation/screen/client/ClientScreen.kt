@@ -1,6 +1,5 @@
-package com.svstudio.eccomerceapp.presentation.navigation.screen
+package com.svstudio.eccomerceapp.presentation.navigation.screen.client
 
-import android.icu.text.CaseMap
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
@@ -25,6 +24,11 @@ sealed class ClientScreen (
     )
     object  Profile: ClientScreen(
         route = "client/profile",
+        title = "Perfil",
+        icon = Icons.Default.Person
+    )
+    object  ProfileUpdate: ClientScreen(
+        route = "client/profile/update",
         title = "Perfil",
         icon = Icons.Default.Person
     )

@@ -11,8 +11,8 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.svstudio.eccomerceapp.presentation.navigation.screen.AdminScreen
-import com.svstudio.eccomerceapp.presentation.navigation.screen.ClientScreen
+import com.svstudio.eccomerceapp.presentation.navigation.screen.admin.AdminScreen
+import com.svstudio.eccomerceapp.presentation.navigation.screen.client.ClientScreen
 
 @Composable
 fun RowScope.AdminBottomBarItem(

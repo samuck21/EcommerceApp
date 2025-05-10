@@ -1,11 +1,11 @@
-package com.svstudio.eccomerceapp.presentation.navigation.graph
+package com.svstudio.eccomerceapp.presentation.navigation.graph.root
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import com.svstudio.eccomerceapp.presentation.navigation.Graph
-import com.svstudio.eccomerceapp.presentation.scree_auth.client.home.ClientHomeScreen
+import com.svstudio.eccomerceapp.presentation.navigation.graph.auth.AuthNavGraph
+import com.svstudio.eccomerceapp.presentation.navigation.graph.roles.RolesNavGraph
 
 @Composable
 fun RootNavGraph(navController: NavHostController){

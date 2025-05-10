@@ -15,7 +15,7 @@ import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
 import com.svstudio.eccomerceapp.domain.model.Rol
 import com.svstudio.eccomerceapp.presentation.navigation.Graph
-import com.svstudio.eccomerceapp.presentation.navigation.screen.AuthScreen
+import com.svstudio.eccomerceapp.presentation.navigation.screen.auth.AuthScreen
 
 @Composable
 fun RolesItem(rol: Rol, navController: NavHostController){

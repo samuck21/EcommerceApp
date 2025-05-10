@@ -14,7 +14,7 @@ import androidx.navigation.NavController
 import com.svstudio.eccomerceapp.presentation.scree_auth.login.LoginViewModel
 import  com.svstudio.eccomerceapp.domain.until.Resource
 import com.svstudio.eccomerceapp.presentation.navigation.Graph
-import com.svstudio.eccomerceapp.presentation.navigation.screen.AuthScreen
+import com.svstudio.eccomerceapp.presentation.navigation.screen.auth.AuthScreen
 
 @Composable
 fun Login(navController: NavController,vm: LoginViewModel = hiltViewModel()){

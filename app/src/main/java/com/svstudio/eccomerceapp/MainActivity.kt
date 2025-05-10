@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.svstudio.eccomerceapp.presentation.navigation.graph.RootNavGraph
+import com.svstudio.eccomerceapp.presentation.navigation.graph.root.RootNavGraph
 import com.svstudio.eccomerceapp.ui.theme.EccomerceAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
