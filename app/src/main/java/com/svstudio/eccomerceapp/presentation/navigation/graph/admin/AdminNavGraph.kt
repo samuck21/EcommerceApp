@@ -22,11 +22,12 @@ fun AdminNavGraph(navController: NavHostController){
             AdminProductListScreen()
         }
         composable (route = AdminScreen.CategoryList.route){
-            AdminCategoryListScreen()
+            AdminCategoryListScreen(navController)
         }
         composable (route = AdminScreen.Profile.route) {
             ProfileScreen(navController)
         }
         ProfileNavGraph(navController)
+        AdminCategoryNavGraph(navController)
     }
 }

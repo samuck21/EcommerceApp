@@ -1,5 +1,6 @@
 package com.svstudio.eccomerceapp.presentation.scree_auth.profile.update
 
+import android.util.Log
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,7 +17,8 @@ import com.svstudio.eccomerceapp.presentation.scree_auth.profile.update.componet
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileUpdateScreen(navController: NavHostController) {
+fun ProfileUpdateScreen(navController: NavHostController,userParam: String) {
+    Log.d("ProfileUpdateScreen","Data: $userParam")
     Scaffold (
      topBar = {
          TopAppBar(
@@ -33,7 +35,7 @@ fun ProfileUpdateScreen(navController: NavHostController) {
          )
      }
     ) {
-        ProfileUpdateContent(it)
+        ProfileUpdateContent(it,navController)
     }
 
 }

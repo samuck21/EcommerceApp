@@ -45,6 +45,7 @@ import coil3.compose.AsyncImage
 import com.svstudio.eccomerceapp.MainActivity
 import com.svstudio.eccomerceapp.R
 import com.svstudio.eccomerceapp.presentation.navigation.Graph
+import com.svstudio.eccomerceapp.presentation.navigation.screen.client.profile.ProfileScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.profile.info.ProfileViewModel
 
 @SuppressLint("ContextCastToActivity")
@@ -163,9 +164,7 @@ fun ProfileContent(paddingValues: PaddingValues,navController: NavHostController
                     }
                     Button(
                         onClick = {
-                            navController.navigate(route = Graph.PROFILE)
-
-
+                            navController.navigate(route = "${ProfileScreen.ProfileUpdate.route}/${vm.user?.toJson()}")
                         },
                         modifier = Modifier
                             .padding(top = 30.dp, start = 10.dp, end = 10.dp)

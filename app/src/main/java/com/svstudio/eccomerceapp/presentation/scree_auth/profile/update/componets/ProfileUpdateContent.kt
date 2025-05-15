@@ -40,16 +40,18 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
 import com.svstudio.eccomerceapp.MainActivity
 import com.svstudio.eccomerceapp.R
 import com.svstudio.eccomerceapp.presentation.componets.DefaultTextField
+import com.svstudio.eccomerceapp.presentation.navigation.Graph
 import com.svstudio.eccomerceapp.presentation.scree_auth.profile.info.ProfileViewModel
 import com.svstudio.eccomerceapp.presentation.scree_auth.profile.update.ProfileUpdateViewModel
 
 @SuppressLint("ContextCastToActivity")
 @Composable
-fun ProfileUpdateContent(paddingValues: PaddingValues,vm: ProfileUpdateViewModel= hiltViewModel()){
+fun ProfileUpdateContent(paddingValues: PaddingValues, navController: NavHostController, vm: ProfileUpdateViewModel= hiltViewModel()){
     val activity = LocalContext.current as? Activity
     var state = vm.state
     Box(modifier = Modifier.padding(paddingValues = paddingValues)){
@@ -128,7 +130,9 @@ fun ProfileUpdateContent(paddingValues: PaddingValues,vm: ProfileUpdateViewModel
                         keyboardType = KeyboardType.Phone
                     )
                     Button(
-                        onClick = {},
+                        onClick = {
+                           // navController.navigate(route = "${Graph.PROFILE}/${vm.user?.toJson()}")
+                        },
                         modifier = Modifier
                             .padding(top = 30.dp, start = 10.dp, end = 10.dp)
                             .fillMaxWidth(),
