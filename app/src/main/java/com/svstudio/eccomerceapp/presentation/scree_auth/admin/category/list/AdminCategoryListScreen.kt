@@ -15,6 +15,7 @@ import androidx.navigation.NavHostController
 import com.svstudio.eccomerceapp.Greeting
 import com.svstudio.eccomerceapp.presentation.navigation.Graph
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.category.list.components.AdminCategoryListContent
+import com.svstudio.eccomerceapp.presentation.scree_auth.admin.category.list.components.GetCategories
 
 @Composable
 fun AdminCategoryListScreen(navController: NavHostController){
@@ -33,9 +34,12 @@ fun AdminCategoryListScreen(navController: NavHostController){
                  )
              }
          }
-    ) {
-        AdminCategoryListContent(it)
+    ) {  padding->
+        GetCategories(padding)
     }
+    
+
+
 
 
 }

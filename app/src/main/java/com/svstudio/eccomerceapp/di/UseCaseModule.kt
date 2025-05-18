@@ -4,12 +4,16 @@ import com.svstudio.eccomerceapp.data.repository.dataImpl.AuthRemoteDataSourceIm
 import com.svstudio.eccomerceapp.data.repository.dataSource.AuthRemoteDataSource
 import com.svstudio.eccomerceapp.data.service.AuthService
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
+import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
 import com.svstudio.eccomerceapp.domain.usecase.auth.AuthUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.GetSessionDataUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.LoginUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.LogoutUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.RegisterUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.SaveSessionUseCase
+import com.svstudio.eccomerceapp.domain.usecase.categories.CategoriesUseCase
+import com.svstudio.eccomerceapp.domain.usecase.categories.CreateCategoryUseCase
+import com.svstudio.eccomerceapp.domain.usecase.categories.GetCategoryUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,5 +29,11 @@ object UseCaseModule {
         saveSession = SaveSessionUseCase(authRepository),
         getSessionData = GetSessionDataUseCase(authRepository),
         logout = LogoutUseCase(authRepository)
+    )
+    @Provides
+    fun provideCategoriesUseCase(categoriesRepository: CategoriesRepository) = CategoriesUseCase(
+        createCategory = CreateCategoryUseCase(categoriesRepository),
+        getCategories = GetCategoryUseCase(categoriesRepository)
+
     )
 }

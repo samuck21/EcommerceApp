@@ -54,6 +54,7 @@ import com.svstudio.eccomerceapp.presentation.scree_auth.profile.update.ProfileU
 fun ProfileUpdateContent(paddingValues: PaddingValues, navController: NavHostController, vm: ProfileUpdateViewModel= hiltViewModel()){
     val activity = LocalContext.current as? Activity
     var state = vm.state
+    vm.resultingActivityHandler.handle()
     Box(modifier = Modifier.padding(paddingValues = paddingValues)){
         Image( modifier = Modifier.fillMaxSize(),
             painter = painterResource(id = R.drawable.profile_background),

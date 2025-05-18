@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
@@ -29,8 +31,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.DefaultTintColor
@@ -41,9 +46,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.hilt.navigation.compose.hiltViewModel
+import coil3.compose.AsyncImage
+import com.svstudio.eccomerceapp.presentation.componets.DialogCapturePicture
+import com.svstudio.eccomerceapp.presentation.scree_auth.admin.category.create.AdminCategoryCreateViewModel
 
 @Composable
-fun AdminCategoryCreateContent(){
+fun AdminCategoryCreateContent(vm: AdminCategoryCreateViewModel = hiltViewModel()){
+    val state = vm.state
+    vm.resultingActivityHandler.handle()
+
+    val stateDialog = remember {
+        mutableStateOf(false)
+    }
+    DialogCapturePicture(
+        state = stateDialog,
+        takePhoto = {vm.takePhoto()},
+        pickImage = {vm.pickImage()}
+    )
+
     Box(modifier = Modifier
         .background(color = Color.LightGray)
         .fillMaxSize()) {
@@ -55,10 +77,32 @@ fun AdminCategoryCreateContent(){
         )
         Column() {
             Box(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
-                Image(
-                    painter = painterResource(id = com.svstudio.eccomerceapp.R.drawable.image_add),
-                    contentDescription = ""
-                )
+               if(!state.image.isNullOrBlank()){
+                   AsyncImage(
+                       modifier = Modifier
+                           .size(150.dp)
+                           .clip(CircleShape)
+                           .align(Alignment.Center)
+                           .clickable{
+                               stateDialog.value =true
+                           },
+                       model = state.image,
+                       contentDescription = "",
+                       contentScale = ContentScale.Crop
+                   )
+               }else{
+                   Image(
+                       modifier = Modifier
+                           .size(150.dp)
+                           .clip(CircleShape)
+                           .align(Alignment.Center)
+                           .clickable{
+                               stateDialog.value = true
+                           },
+                       painter = painterResource(id = com.svstudio.eccomerceapp.R.drawable.user_image),
+                       contentDescription = ""
+                   )
+               }
             }
             Card(
                 Modifier
@@ -91,8 +135,8 @@ fun AdminCategoryCreateContent(){
                             modifier = Modifier.size(40.dp)
                         )
                         TextField(
-                            value = "",
-                            onValueChange = {},
+                            value =state.name,
+                            onValueChange = {vm.onNameInput(it)},
                             modifier = Modifier.fillMaxWidth(),
                             label = { Text("Nombre de la categoria") },
                             colors = TextFieldDefaults.colors(
@@ -115,8 +159,8 @@ fun AdminCategoryCreateContent(){
                             modifier = Modifier.size(40.dp)
                         )
                         TextField(
-                            value = "",
-                            onValueChange = {},
+                            value = state.description,
+                            onValueChange = {vm.onDescriptionInput(it)},
                             modifier = Modifier.fillMaxWidth(),
                             label = { Text("Nombre de la categoria") },
                             colors = TextFieldDefaults.colors(
@@ -130,7 +174,7 @@ fun AdminCategoryCreateContent(){
 
                     Button(
                         onClick = {
-
+                            vm.createCategory()
                         },
                         modifier = Modifier
                             .fillMaxWidth()

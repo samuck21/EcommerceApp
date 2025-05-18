@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.category.create.componets.AdminCategoryCreateContent
+import com.svstudio.eccomerceapp.presentation.scree_auth.admin.category.create.componets.CreateCategory
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -22,4 +23,5 @@ fun AdminCategoryCreateScreen(navController: NavHostController) {
     ) { it
         AdminCategoryCreateContent()
     }
+    CreateCategory()
 }

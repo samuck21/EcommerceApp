@@ -1,6 +1,7 @@
 package com.svstudio.eccomerceapp.di
 
 import com.svstudio.eccomerceapp.data.service.AuthService
+import com.svstudio.eccomerceapp.data.service.CategoriesService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,5 +26,10 @@ object NetworkModule {
     @Singleton
     fun provideAuthService(retrofit: Retrofit): AuthService{
         return retrofit.create(AuthService::class.java)
+    }
+    @Provides
+    @Singleton
+    fun provideCategoriesService(retrofit: Retrofit): CategoriesService{
+        return retrofit.create(CategoriesService::class.java)
     }
 }
