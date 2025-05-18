@@ -9,6 +9,7 @@ import com.svstudio.eccomerceapp.domain.model.Category
 import android.graphics.fonts.Font
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,10 +33,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
+import com.svstudio.eccomerceapp.presentation.navigation.screen.admin.AdminCategoryScreen
 
 @Composable
-fun AdminCategoryListItem(category: Category) {
+fun AdminCategoryListItem(navController: NavHostController,category: Category) {
     Box(
         Modifier
             .background(Color.White)
@@ -77,6 +80,11 @@ fun AdminCategoryListItem(category: Category) {
                                 .align(Alignment.TopEnd)
                                 .padding(10.dp)
                                 .size(30.dp)
+                                .clickable{
+                                 navController.navigate(
+                                     route = AdminCategoryScreen.CategoryUpdate.passCategory(category.toJson())
+                                 )
+                                }
 
                         )
                         Icon(

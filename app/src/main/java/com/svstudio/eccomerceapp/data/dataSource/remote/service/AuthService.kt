@@ -1,4 +1,4 @@
-package com.svstudio.eccomerceapp.data.service
+package com.svstudio.eccomerceapp.data.dataSource.remote.service
 
 import com.svstudio.eccomerceapp.domain.model.AuthResponse
 import com.svstudio.eccomerceapp.domain.model.User

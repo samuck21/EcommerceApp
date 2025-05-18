@@ -1,12 +1,7 @@
-package com.svstudio.eccomerceapp.data.repository.dataImpl
+package com.svstudio.eccomerceapp.data.dataSource.remote
 
-import com.svstudio.eccomerceapp.data.repository.dataSource.AuthRemoteDataSource
-import com.svstudio.eccomerceapp.data.repository.dataSource.CategoriesRemoteDataSource
-import com.svstudio.eccomerceapp.data.service.AuthService
-import com.svstudio.eccomerceapp.data.service.CategoriesService
-import com.svstudio.eccomerceapp.domain.model.AuthResponse
+import com.svstudio.eccomerceapp.data.dataSource.remote.service.CategoriesService
 import com.svstudio.eccomerceapp.domain.model.Category
-import com.svstudio.eccomerceapp.domain.model.User
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -30,16 +25,21 @@ class CategoriesRemoteDataSourceImpl (private val categoriesService: CategoriesS
     override suspend fun update(
         id: String,
         category: Category
-    ): Response<Category> {
-        TODO("Not yet implemented")
-    }
+    ): Response<Category> = categoriesService.update(id,category)
 
     override suspend fun updateWithImage(
         id: String,
         category: Category,
         file: File
     ): Response<Category> {
-        TODO("Not yet implemented")
+        val  conection = file.toURI().toURL().openConnection()
+        val mimeType = conection.contentType
+        val contentType = "text/plain"
+        val requestFile = file.asRequestBody(mimeType.toMediaTypeOrNull())
+        val fileFormData = MultipartBody.Part.createFormData("file",file.name,requestFile)
+        val nameData = category.name.toRequestBody(contentType.toMediaTypeOrNull())
+        val descriptionData = category.description.toRequestBody(contentType.toMediaTypeOrNull())
+        return  categoriesService.updateWithImage(fileFormData,id,nameData, description = descriptionData)
     }
 
     override suspend fun delete(id: String): Response<Unit> {

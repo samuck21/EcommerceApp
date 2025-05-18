@@ -1,4 +1,4 @@
-package com.svstudio.eccomerceapp.data.repository.dataSource
+package com.svstudio.eccomerceapp.data.dataSource.local
 
 import com.svstudio.eccomerceapp.domain.model.AuthResponse
 import kotlinx.coroutines.flow.Flow

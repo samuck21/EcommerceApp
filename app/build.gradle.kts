@@ -84,6 +84,12 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.8.4")
     implementation("io.coil-kt.coil3:coil-compose:3.1.0")
     implementation("androidx.compose.material:material:1.8.1")
+ //Room
+    val room_version = "2.7.1"
+
+    implementation("androidx.room:room-runtime:$room_version")
+
+    annotationProcessor("androidx.room:room-compiler:$room_version")
 }
 kapt {
     correctErrorTypes = true

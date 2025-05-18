@@ -1,10 +1,8 @@
-package com.svstudio.eccomerceapp.data.service
+package com.svstudio.eccomerceapp.data.dataSource.remote.service
 
-import android.credentials.CredentialDescription
 import com.svstudio.eccomerceapp.domain.model.Category
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -33,12 +31,12 @@ interface CategoriesService {
         @Body category: Category
     ): Response<Category>
     @Multipart
-    @PUT("categories/{id}")
+    @PUT("categories/upload/{id}")
     suspend fun updateWithImage(
         @Part file: MultipartBody.Part,
-        @Path("id")id: String,
-        @Part("name")name: RequestBody,
-        @Part("description") description: ResponseBody,
+        @Path("id") id: String,
+        @Part("name") name: RequestBody,
+        @Part("description") description: RequestBody,
     ): Response<Category>
 
     @DELETE("categories/{}")

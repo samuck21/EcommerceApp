@@ -1,8 +1,5 @@
 package com.svstudio.eccomerceapp.di
 
-import com.svstudio.eccomerceapp.data.repository.dataImpl.AuthRemoteDataSourceImpl
-import com.svstudio.eccomerceapp.data.repository.dataSource.AuthRemoteDataSource
-import com.svstudio.eccomerceapp.data.service.AuthService
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
 import com.svstudio.eccomerceapp.domain.usecase.auth.AuthUseCase
@@ -14,6 +11,8 @@ import com.svstudio.eccomerceapp.domain.usecase.auth.SaveSessionUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.CategoriesUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.CreateCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.GetCategoryUseCase
+import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryUseCase
+import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryWithImageUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,7 +32,9 @@ object UseCaseModule {
     @Provides
     fun provideCategoriesUseCase(categoriesRepository: CategoriesRepository) = CategoriesUseCase(
         createCategory = CreateCategoryUseCase(categoriesRepository),
-        getCategories = GetCategoryUseCase(categoriesRepository)
+        getCategories = GetCategoryUseCase(categoriesRepository),
+        updateCategory = UpdateCategoryUseCase(categoriesRepository),
+        updateCategoryWithImage = UpdateCategoryWithImageUseCase(categoriesRepository)
 
     )
 }

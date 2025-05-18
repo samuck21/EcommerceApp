@@ -1,17 +1,13 @@
 package com.svstudio.eccomerceapp.data.repository
 
-import coil3.network.HttpException
-import com.svstudio.eccomerceapp.data.repository.dataSource.AuthLocalDataSource
-import com.svstudio.eccomerceapp.data.repository.dataSource.AuthRemoteDataSource
+import com.svstudio.eccomerceapp.data.dataSource.local.AuthLocalDataSource
+import com.svstudio.eccomerceapp.data.dataSource.remote.AuthRemoteDataSource
 import com.svstudio.eccomerceapp.domain.model.AuthResponse
-import com.svstudio.eccomerceapp.domain.model.ErrorResponse
 import com.svstudio.eccomerceapp.domain.model.User
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
-import com.svstudio.eccomerceapp.domain.until.ConvertErrorBody
 import com.svstudio.eccomerceapp.domain.until.Resource
 import com.svstudio.eccomerceapp.domain.until.ResponseToRequest
 import kotlinx.coroutines.flow.Flow
-import java.io.IOException
 
 class AuthRepositoryImpl (
     private  val authRemoteDataSource: AuthRemoteDataSource,

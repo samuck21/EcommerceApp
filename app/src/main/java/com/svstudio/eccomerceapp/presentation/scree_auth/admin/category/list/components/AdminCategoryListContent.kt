@@ -8,10 +8,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.svstudio.eccomerceapp.domain.model.Category
 
 @Composable
-fun AdminCategoryListContent( categories: List<Category>,paddingValues: PaddingValues){
+fun AdminCategoryListContent( navController: NavHostController,categories: List<Category>,paddingValues: PaddingValues){
     LazyColumn(
         modifier = Modifier.fillMaxWidth().padding(paddingValues)
     ) {
@@ -19,7 +21,7 @@ fun AdminCategoryListContent( categories: List<Category>,paddingValues: PaddingV
             items = categories,
             )
         { category ->
-            AdminCategoryListItem(category)
+            AdminCategoryListItem(navController,category)
         }
     }
 }

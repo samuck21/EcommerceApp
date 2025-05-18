@@ -1,7 +1,6 @@
-package com.svstudio.eccomerceapp.data.repository.dataImpl
+package com.svstudio.eccomerceapp.data.dataSource.remote
 
-import com.svstudio.eccomerceapp.data.repository.dataSource.AuthRemoteDataSource
-import com.svstudio.eccomerceapp.data.service.AuthService
+import com.svstudio.eccomerceapp.data.dataSource.remote.service.AuthService
 import com.svstudio.eccomerceapp.domain.model.AuthResponse
 import com.svstudio.eccomerceapp.domain.model.User
 import retrofit2.Response

@@ -1,6 +1,6 @@
 package com.svstudio.eccomerceapp.data.repository
 
-import com.svstudio.eccomerceapp.data.repository.dataSource.CategoriesRemoteDataSource
+import com.svstudio.eccomerceapp.data.dataSource.remote.CategoriesRemoteDataSource
 import com.svstudio.eccomerceapp.domain.model.Category
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
 import com.svstudio.eccomerceapp.domain.until.Resource
@@ -26,12 +26,18 @@ class CategoriesRepositoryImpl (private val  categoriesRemoteDataSource: Categor
 
     override suspend fun update(
         id: String,
+        category: Category
+    ): Resource<Category> = ResponseToRequest.send(
+        categoriesRemoteDataSource.update(id,category)
+    )
+
+    override suspend fun updateWithImage(
+        id: String,
         category: Category,
         file: File
-    ): Resource<Category> {
-        TODO("Not yet implemented")
-    }
-
+    ): Resource<Category> = ResponseToRequest.send(
+        categoriesRemoteDataSource.updateWithImage(id,category,file)
+    )
     override suspend fun delete(id: String): Resource<Unit> {
         TODO("Not yet implemented")
     }

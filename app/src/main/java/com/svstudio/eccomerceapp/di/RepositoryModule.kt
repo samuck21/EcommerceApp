@@ -1,13 +1,10 @@
 package com.svstudio.eccomerceapp.di
 
 import com.svstudio.eccomerceapp.data.repository.AuthRepositoryImpl
-import com.svstudio.eccomerceapp.data.repository.dataImpl.AuthLocalDataSourceImpl
-import com.svstudio.eccomerceapp.data.repository.dataImpl.AuthRemoteDataSourceImpl
 import com.svstudio.eccomerceapp.data.repository.CategoriesRepositoryImpl
-import com.svstudio.eccomerceapp.data.repository.dataSource.AuthLocalDataSource
-import com.svstudio.eccomerceapp.data.repository.dataSource.AuthRemoteDataSource
-import com.svstudio.eccomerceapp.data.repository.dataSource.CategoriesRemoteDataSource
-import com.svstudio.eccomerceapp.data.service.AuthService
+import com.svstudio.eccomerceapp.data.dataSource.local.AuthLocalDataSource
+import com.svstudio.eccomerceapp.data.dataSource.remote.AuthRemoteDataSource
+import com.svstudio.eccomerceapp.data.dataSource.remote.CategoriesRemoteDataSource
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
 import dagger.Module

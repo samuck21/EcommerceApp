@@ -35,9 +35,9 @@ fun AdminCategoryListScreen(navController: NavHostController){
              }
          }
     ) {  padding->
-        GetCategories(padding)
+        GetCategories(navController,padding)
     }
-    
+
 
 
 

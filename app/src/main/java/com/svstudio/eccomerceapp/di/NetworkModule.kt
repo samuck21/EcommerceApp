@@ -1,7 +1,7 @@
 package com.svstudio.eccomerceapp.di
 
-import com.svstudio.eccomerceapp.data.service.AuthService
-import com.svstudio.eccomerceapp.data.service.CategoriesService
+import com.svstudio.eccomerceapp.data.dataSource.remote.service.AuthService
+import com.svstudio.eccomerceapp.data.dataSource.remote.service.CategoriesService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

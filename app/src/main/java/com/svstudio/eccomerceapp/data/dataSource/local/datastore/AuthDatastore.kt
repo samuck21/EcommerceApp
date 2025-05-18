@@ -1,4 +1,4 @@
-package com.svstudio.eccomerceapp.data.datastore
+package com.svstudio.eccomerceapp.data.dataSource.local.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
