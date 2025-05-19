@@ -3,6 +3,7 @@ package com.svstudio.eccomerceapp.di
 import com.svstudio.eccomerceapp.data.repository.AuthRepositoryImpl
 import com.svstudio.eccomerceapp.data.repository.CategoriesRepositoryImpl
 import com.svstudio.eccomerceapp.data.dataSource.local.AuthLocalDataSource
+import com.svstudio.eccomerceapp.data.dataSource.local.CategoriesLocalDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.AuthRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.CategoriesRemoteDataSource
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
@@ -25,5 +26,6 @@ object RepositoryModule {
     @Provides
     fun provideCategoriesRepository(
      categoriesRemoteDataSource: CategoriesRemoteDataSource,
-    ): CategoriesRepository = CategoriesRepositoryImpl(categoriesRemoteDataSource)
+     categoriesLocalDataSource: CategoriesLocalDataSource
+    ): CategoriesRepository = CategoriesRepositoryImpl(categoriesRemoteDataSource,categoriesLocalDataSource)
 }

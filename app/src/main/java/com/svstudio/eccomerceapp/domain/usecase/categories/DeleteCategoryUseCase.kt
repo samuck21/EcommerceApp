@@ -4,6 +4,6 @@ import com.svstudio.eccomerceapp.domain.model.Category
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
 import java.io.File
 
-class GetCategoryUseCase (private  val repository: CategoriesRepository) {
-    suspend operator fun  invoke() = repository.getCategories()
+class DeleteCategoryUseCase (private  val repository: CategoriesRepository) {
+    suspend operator fun  invoke(id:String) = repository.delete(id)
 }

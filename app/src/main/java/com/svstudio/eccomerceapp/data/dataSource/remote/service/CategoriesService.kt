@@ -39,7 +39,7 @@ interface CategoriesService {
         @Part("description") description: RequestBody,
     ): Response<Category>
 
-    @DELETE("categories/{}")
+    @DELETE("categories/{id}")
     suspend fun  delete(
         @Path("id") id: String,
     ): Response<Unit>

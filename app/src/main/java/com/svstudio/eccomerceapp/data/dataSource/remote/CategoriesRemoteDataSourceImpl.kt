@@ -42,8 +42,5 @@ class CategoriesRemoteDataSourceImpl (private val categoriesService: CategoriesS
         return  categoriesService.updateWithImage(fileFormData,id,nameData, description = descriptionData)
     }
 
-    override suspend fun delete(id: String): Response<Unit> {
-        TODO("Not yet implemented")
-    }
-
+    override suspend fun delete(id: String): Response<Unit> = categoriesService.delete(id)
 }

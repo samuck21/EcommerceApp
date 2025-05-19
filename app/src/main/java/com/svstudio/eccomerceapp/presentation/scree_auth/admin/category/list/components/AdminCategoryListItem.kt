@@ -33,12 +33,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
 import com.svstudio.eccomerceapp.presentation.navigation.screen.admin.AdminCategoryScreen
+import com.svstudio.eccomerceapp.presentation.scree_auth.admin.category.list.AdminCategoryListViewModel
 
 @Composable
-fun AdminCategoryListItem(navController: NavHostController,category: Category) {
+fun AdminCategoryListItem(navController: NavHostController,category: Category, vm: AdminCategoryListViewModel = hiltViewModel()) {
     Box(
         Modifier
             .background(Color.White)
@@ -95,6 +97,9 @@ fun AdminCategoryListItem(navController: NavHostController,category: Category) {
                                 .align(Alignment.BottomEnd)
                                 .padding(10.dp)
                                 .size(30.dp)
+                                .clickable{
+                                 vm.deleteCategory(category.id ?:"")
+                                }
 
                         )
                     }

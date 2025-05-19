@@ -10,6 +10,7 @@ import com.svstudio.eccomerceapp.domain.usecase.auth.RegisterUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.SaveSessionUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.CategoriesUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.CreateCategoryUseCase
+import com.svstudio.eccomerceapp.domain.usecase.categories.DeleteCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.GetCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryWithImageUseCase
@@ -34,7 +35,8 @@ object UseCaseModule {
         createCategory = CreateCategoryUseCase(categoriesRepository),
         getCategories = GetCategoryUseCase(categoriesRepository),
         updateCategory = UpdateCategoryUseCase(categoriesRepository),
-        updateCategoryWithImage = UpdateCategoryWithImageUseCase(categoriesRepository)
+        updateCategoryWithImage = UpdateCategoryWithImageUseCase(categoriesRepository),
+        deleteCategory = DeleteCategoryUseCase(categoriesRepository)
 
     )
 }

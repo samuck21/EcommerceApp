@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Person
@@ -69,20 +70,37 @@ fun ProfileContent(paddingValues: PaddingValues,navController: NavHostController
             Box(modifier = Modifier
                 .weight(2f)
                 .fillMaxWidth()){
-                IconButton( onClick = {
-                    vm.logout()
-                    activity?.finish()
-                    activity?.startActivity(Intent(activity, MainActivity::class.java))
-                }) {
-                    Icon(
-                        modifier = Modifier
-                            .size(35.dp)
-                            .align(Alignment.TopStart),
-                        imageVector = Icons.Default.ExitToApp,
-                        contentDescription = "",
-                        tint = Color.White
-                    )
+                Column (modifier = Modifier
+                    .align(Alignment.TopStart)){
+                    IconButton( onClick = {
+                        vm.logout()
+                        activity?.finish()
+                        activity?.startActivity(Intent(activity, MainActivity::class.java))
+                    }) {
+                        Icon(
+                            modifier = Modifier
+                                .size(35.dp)
+                                .padding(top = 30.dp),
+                            imageVector = Icons.Default.ExitToApp,
+                            contentDescription = "",
+                            tint = Color.White
+                        )
+                    }
+                    IconButton( onClick = {
+                        activity?.finish()
+                        activity?.startActivity(Intent(activity, MainActivity::class.java))
+                    }) {
+                        Icon(
+                            modifier = Modifier
+                                .size(35.dp),
+
+                            imageVector = Icons.Default.Close,
+                            contentDescription = "",
+                            tint = Color.White
+                        )
+                    }
                 }
+
                 if(!vm.user?.image.isNullOrBlank()){
                     AsyncImage(
                         modifier = Modifier

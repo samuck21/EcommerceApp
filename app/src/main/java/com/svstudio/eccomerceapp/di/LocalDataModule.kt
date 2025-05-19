@@ -3,6 +3,9 @@ package com.svstudio.eccomerceapp.di
 import com.svstudio.eccomerceapp.data.dataSource.local.datastore.AuthDatastore
 import com.svstudio.eccomerceapp.data.dataSource.local.AuthLocalDataSourceImpl
 import com.svstudio.eccomerceapp.data.dataSource.local.AuthLocalDataSource
+import com.svstudio.eccomerceapp.data.dataSource.local.CategoriesLocalDataSource
+import com.svstudio.eccomerceapp.data.dataSource.local.CategoriesLocalDataSourceImpl
+import com.svstudio.eccomerceapp.data.dataSource.local.dao.CategoriesDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,4 +17,7 @@ object LocalDataModule {
     @Provides
     fun provideAuthLocalDataSource(authDatastore: AuthDatastore): AuthLocalDataSource =
         AuthLocalDataSourceImpl(authDatastore)
+    @Provides
+    fun providerCategoriesLocalDataSource(categoriesDao: CategoriesDao) : CategoriesLocalDataSource =
+        CategoriesLocalDataSourceImpl(categoriesDao)
 }
