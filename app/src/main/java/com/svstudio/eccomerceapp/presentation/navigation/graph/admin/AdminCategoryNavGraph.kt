@@ -12,6 +12,8 @@ import com.svstudio.eccomerceapp.presentation.navigation.screen.roles.RolesScree
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.category.create.AdminCategoryCreateScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.category.update.AdminCategoryUpdateScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.home.AdminHomeScreen
+import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.create.AdminProductCreateScreen
+import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.list.AdminProductListScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.client.home.ClientHomeScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.roles.RolesScreen
 
@@ -32,6 +34,28 @@ fun NavGraphBuilder.AdminCategoryNavGraph(navController: NavHostController){
         ) {
             it.arguments?.getString("category")?.let {
                 AdminCategoryUpdateScreen(navController = navController,it)
+            }
+
+        }
+        composable( route = AdminCategoryScreen.ProductList.route,
+            arguments = listOf(navArgument ("category") {
+                type = NavType.StringType
+            })
+
+        ) {
+            it.arguments?.getString("category")?.let {
+                AdminProductListScreen(navController = navController,it)
+            }
+
+        }
+        composable( route = AdminCategoryScreen.ProductCreate.route,
+            arguments = listOf(navArgument ("category") {
+                type = NavType.StringType
+            })
+
+        ) {
+            it.arguments?.getString("category")?.let {
+                AdminProductCreateScreen(navController = navController,it)
             }
 
         }

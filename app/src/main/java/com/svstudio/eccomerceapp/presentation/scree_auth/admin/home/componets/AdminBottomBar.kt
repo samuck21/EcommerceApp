@@ -11,7 +11,7 @@ import com.svstudio.eccomerceapp.presentation.navigation.screen.client.ClientScr
 @Composable
 fun AdminBottomBar(navController: NavHostController){
     val screens = listOf(
-        AdminScreen.ProductList,
+       // AdminScreen.ProductList,
         AdminScreen.CategoryList,
         AdminScreen.Profile
     )

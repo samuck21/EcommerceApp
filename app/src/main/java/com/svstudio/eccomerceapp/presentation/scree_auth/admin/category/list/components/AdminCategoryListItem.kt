@@ -46,7 +46,10 @@ fun AdminCategoryListItem(navController: NavHostController,category: Category, v
             .background(Color.White)
             .fillMaxSize()
     ) {
-        Column(Modifier.padding(top = 30.dp, start = 20.dp, end = 20.dp)) {
+        Column(Modifier.padding(top = 30.dp, start = 20.dp, end = 20.dp)
+            .clickable{
+                navController.navigate(route = AdminCategoryScreen.ProductList.passCategory(category.toJson()))
+            }) {
             ElevatedCard(
                 elevation = CardDefaults.cardElevation(
                     defaultElevation = 6.dp
