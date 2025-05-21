@@ -16,6 +16,7 @@ import com.svstudio.eccomerceapp.domain.usecase.categories.GetCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryWithImageUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.CreateProductUseCase
+import com.svstudio.eccomerceapp.domain.usecase.products.FindByCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.ProductsUseCase
 import dagger.Module
 import dagger.Provides
@@ -45,6 +46,7 @@ object UseCaseModule {
     @Provides
     fun provideProductsUseCase(productsRepository: ProductsRepository) = ProductsUseCase(
         createProduct = CreateProductUseCase(productsRepository),
+        findByCategory = FindByCategoryUseCase(productsRepository)
 
     )
 }

@@ -1,6 +1,7 @@
 package com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.list
 
 import android.util.Log
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -16,6 +17,7 @@ import com.svstudio.eccomerceapp.domain.model.Category
 import com.svstudio.eccomerceapp.presentation.navigation.Graph
 import com.svstudio.eccomerceapp.presentation.navigation.screen.admin.AdminCategoryScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.list.components.AdminProductListContent
+import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.list.components.GetProducts
 import kotlin.math.log
 
 @Composable
@@ -37,8 +39,8 @@ fun AdminProductListScreen(navController: NavHostController,category: String){
                 )
             }
         }
-    ) {
-        AdminProductListContent(it)
+    ) { paddingValues ->
+        GetProducts(navController = navController, paddingValues = paddingValues)
     }
 
 }

@@ -6,6 +6,7 @@ import com.svstudio.eccomerceapp.domain.repository.ProductsRepository
 import com.svstudio.eccomerceapp.domain.until.Resource
 import com.svstudio.eccomerceapp.domain.until.ResponseToRequest
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import java.io.File
 
 class ProductsRepositoryImpl(private val productsRemoteDataSource: ProductsRemoteDataSource): ProductsRepository {
@@ -13,8 +14,12 @@ class ProductsRepositoryImpl(private val productsRemoteDataSource: ProductsRemot
         TODO("Not yet implemented")
     }
 
-    override fun findByCategory(idCategory: String): Flow<Resource<List<Product>>> {
-        TODO("Not yet implemented")
+    override fun findByCategory(idCategory: String): Flow<Resource<List<Product>>> = flow {
+        emit(
+            ResponseToRequest.send(
+                productsRemoteDataSource.findByCategory(idCategory)
+            )
+        )
     }
 
     override suspend fun create(

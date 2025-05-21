@@ -1,5 +1,6 @@
 package com.svstudio.eccomerceapp.data.dataSource.remote.service
 
+import android.R
 import com.svstudio.eccomerceapp.domain.model.Category
 import com.svstudio.eccomerceapp.domain.model.Product
 import okhttp3.MultipartBody
@@ -16,7 +17,10 @@ import retrofit2.http.Path
 
 interface ProductsService {
 
-
+    @GET("products/category/{id_category}")
+    suspend fun  findByCategory(
+        @Path("id_category") idCategory: String
+    ): Response<List<Product>>
     @Multipart
     @POST("products")
     suspend fun  create(
