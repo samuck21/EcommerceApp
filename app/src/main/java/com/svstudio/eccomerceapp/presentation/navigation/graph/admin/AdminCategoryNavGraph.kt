@@ -14,6 +14,7 @@ import com.svstudio.eccomerceapp.presentation.scree_auth.admin.category.update.A
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.home.AdminHomeScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.create.AdminProductCreateScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.list.AdminProductListScreen
+import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.update.AdminProductUpdateScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.client.home.ClientHomeScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.roles.RolesScreen
 
@@ -56,6 +57,17 @@ fun NavGraphBuilder.AdminCategoryNavGraph(navController: NavHostController){
         ) {
             it.arguments?.getString("category")?.let {
                 AdminProductCreateScreen(navController = navController,it)
+            }
+
+        }
+        composable( route = AdminCategoryScreen.ProductUpdate.route,
+            arguments = listOf(navArgument ("product") {
+                type = NavType.StringType
+            })
+
+        ) {
+            it.arguments?.getString("product")?.let {
+                AdminProductUpdateScreen(navController = navController,it)
             }
 
         }
