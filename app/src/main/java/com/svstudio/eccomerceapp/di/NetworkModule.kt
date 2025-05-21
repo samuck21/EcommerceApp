@@ -2,6 +2,7 @@ package com.svstudio.eccomerceapp.di
 
 import com.svstudio.eccomerceapp.data.dataSource.remote.service.AuthService
 import com.svstudio.eccomerceapp.data.dataSource.remote.service.CategoriesService
+import com.svstudio.eccomerceapp.data.dataSource.remote.service.ProductsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,5 +32,11 @@ object NetworkModule {
     @Singleton
     fun provideCategoriesService(retrofit: Retrofit): CategoriesService{
         return retrofit.create(CategoriesService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideProductsService(retrofit: Retrofit): ProductsService{
+        return retrofit.create(ProductsService::class.java)
     }
 }
