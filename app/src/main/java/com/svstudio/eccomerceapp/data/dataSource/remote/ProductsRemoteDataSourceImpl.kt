@@ -22,13 +22,13 @@ class ProductsRemoteDataSourceImpl(private  val productsService: ProductsService
         product: Product,
         files: List<File>
     ): Response<Product> {
-        val images = arrayOf<MultipartBody.Part>()
+        val images = arrayOfNulls<MultipartBody.Part>(files.size)
         val contentType = "text/plain"
         files.forEachIndexed { index,file ->
             val  conection = file.toURI().toURL().openConnection()
             val mimeType = conection.contentType
             val requestFile = file.asRequestBody(mimeType.toMediaTypeOrNull())
-            images [index]= MultipartBody.Part.createFormData("file",file.name,requestFile)
+            images [index]= MultipartBody.Part.createFormData("files[]",file.name,requestFile)
 
         }
 

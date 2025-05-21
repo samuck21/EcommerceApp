@@ -7,12 +7,12 @@ import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
 data class Product(
-    @SerializedName("id")  val id: String?,
+    @SerializedName("id")  val id: String? = null,
     @SerializedName("name")  val name: String,
     @SerializedName("description")  val description: String,
     @SerializedName("id_category")  val idCategory: String,
-    @SerializedName("image1")  val image1: String,
-    @SerializedName("image2")  val image2: String,
+    @SerializedName("image1")  val image1: String ? = null,
+    @SerializedName("image2")  val image2: String ? =null,
     @SerializedName("price")  val price: Double,
     ): Serializable{
     fun toJson():String = Gson().toJson(Product(

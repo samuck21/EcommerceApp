@@ -6,8 +6,11 @@ import com.svstudio.eccomerceapp.data.dataSource.local.AuthLocalDataSource
 import com.svstudio.eccomerceapp.data.dataSource.local.CategoriesLocalDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.AuthRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.CategoriesRemoteDataSource
+import com.svstudio.eccomerceapp.data.dataSource.remote.ProductsRemoteDataSource
+import com.svstudio.eccomerceapp.data.repository.ProductsRepositoryImpl
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
+import com.svstudio.eccomerceapp.domain.repository.ProductsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,4 +31,8 @@ object RepositoryModule {
      categoriesRemoteDataSource: CategoriesRemoteDataSource,
      categoriesLocalDataSource: CategoriesLocalDataSource
     ): CategoriesRepository = CategoriesRepositoryImpl(categoriesRemoteDataSource,categoriesLocalDataSource)
+    @Provides
+    fun provideProductsRepository(
+        productsRemoteDataSource: ProductsRemoteDataSource
+    ): ProductsRepository = ProductsRepositoryImpl(productsRemoteDataSource)
 }

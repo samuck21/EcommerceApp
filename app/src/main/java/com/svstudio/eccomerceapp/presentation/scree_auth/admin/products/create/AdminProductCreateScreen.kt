@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.create.components.AdminProductCreateContent
+import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.create.components.CreateProduct
 
 @Composable
 fun AdminProductCreateScreen(navController: NavHostController,category: String){
@@ -13,4 +14,5 @@ fun AdminProductCreateScreen(navController: NavHostController,category: String){
     Scaffold {
         AdminProductCreateContent(it)
     }
+    CreateProduct()
 }

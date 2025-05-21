@@ -2,6 +2,7 @@ package com.svstudio.eccomerceapp.di
 
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
+import com.svstudio.eccomerceapp.domain.repository.ProductsRepository
 import com.svstudio.eccomerceapp.domain.usecase.auth.AuthUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.GetSessionDataUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.LoginUseCase
@@ -14,6 +15,8 @@ import com.svstudio.eccomerceapp.domain.usecase.categories.DeleteCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.GetCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryWithImageUseCase
+import com.svstudio.eccomerceapp.domain.usecase.products.CreateProductUseCase
+import com.svstudio.eccomerceapp.domain.usecase.products.ProductsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,6 +40,11 @@ object UseCaseModule {
         updateCategory = UpdateCategoryUseCase(categoriesRepository),
         updateCategoryWithImage = UpdateCategoryWithImageUseCase(categoriesRepository),
         deleteCategory = DeleteCategoryUseCase(categoriesRepository)
+
+    )
+    @Provides
+    fun provideProductsUseCase(productsRepository: ProductsRepository) = ProductsUseCase(
+        createProduct = CreateProductUseCase(productsRepository),
 
     )
 }

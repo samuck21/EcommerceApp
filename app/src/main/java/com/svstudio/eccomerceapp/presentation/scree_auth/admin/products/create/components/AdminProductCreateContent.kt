@@ -229,7 +229,7 @@ fun  AdminProductCreateContent(paddingValues: PaddingValues,vm: AdminProductCrea
 
                     Button(
                         onClick = {
-
+                             vm.createProduct()
                         },
                         modifier = Modifier
                             .fillMaxWidth()

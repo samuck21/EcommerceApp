@@ -18,9 +18,9 @@ interface ProductsService {
 
 
     @Multipart
-    @POST("categories")
+    @POST("products")
     suspend fun  create(
-        @Part file: Array< MultipartBody.Part>,
+        @Part file: Array< MultipartBody.Part?>,
         @Part("name") name: RequestBody,
         @Part("description")description: RequestBody,
         @Part("id_category")idCategory: RequestBody,
