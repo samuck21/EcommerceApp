@@ -107,6 +107,7 @@ fun  AdminProductUpdateContent(paddingValues: PaddingValues,vm: AdminProductUpda
                                 .clip(CircleShape)
                                 .clickable{
                                     stateDialog.value =true
+                                    stateDialogImageNumber.value =1
                                 },
                             model = state.image1,
                             contentDescription = "",
@@ -119,6 +120,7 @@ fun  AdminProductUpdateContent(paddingValues: PaddingValues,vm: AdminProductUpda
                                 .clip(CircleShape)
                                 .clickable{
                                     stateDialog.value = true
+                                    stateDialogImageNumber.value =2
                                 },
                             painter = painterResource(id = com.svstudio.eccomerceapp.R.drawable.user_image),
                             contentDescription = ""

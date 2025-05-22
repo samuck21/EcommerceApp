@@ -33,7 +33,7 @@ class AdminProductUpdateViewModel @Inject constructor(
 
     var file1: File? = null
     var file2: File? = null
-    var files: List<File> = listOf()
+    var files: MutableList<File> = mutableListOf()
     val resultingActivityHandler = ResultingActivityHandler()
 
     var data= savedStateHandle.get<String>("product")
@@ -55,9 +55,11 @@ class AdminProductUpdateViewModel @Inject constructor(
             if(imageNumber == 1){
                 file1= ComposeFileProvider.createFileFromUri(context, result)
               state = state.copy(image1 = result.toString())
+                files.add(file2!!)
             }else if(imageNumber ==2){
                 file2= ComposeFileProvider.createFileFromUri(context, result)
                 state = state.copy(image2 = result.toString())
+                files.add(file1!!)
             }
 
         }
@@ -81,6 +83,19 @@ class AdminProductUpdateViewModel @Inject constructor(
             productResponse = Resource.Loading
             val result = productsUseCase.updateProduct(product.id!!,state.toProduct())
             productResponse = result
+        }else{
+            if(file1 !=null) {
+                files.add(file1!!)
+                state.imagesToUpdate.add(0)
+            }
+            if(file2 !=null){
+                files.add(file2!!)
+                state.imagesToUpdate.add(1)
+
+            }
+            val result = productsUseCase.updateProductWithImage(product.id!!,state.toProduct(),files.toList())
+            productResponse = result
+
         }
 
     }

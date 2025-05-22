@@ -38,10 +38,9 @@ class ProductsRepositoryImpl(private val productsRemoteDataSource: ProductsRemot
         id: String,
         product: Product,
         files: List<File>?
-    ): Resource<Product> {
-        TODO("Not yet implemented")
-    }
-
+    ): Resource<Product> = ResponseToRequest.send(
+        productsRemoteDataSource.updateWithImage(id,product,files)
+    )
     override suspend fun delete(id: String): Resource<Unit> {
         TODO("Not yet implemented")
     }

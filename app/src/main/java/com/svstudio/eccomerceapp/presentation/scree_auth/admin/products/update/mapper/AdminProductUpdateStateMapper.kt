@@ -6,9 +6,13 @@ import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.update.A
 
 fun AdminProductUpdateState.toProduct(): Product{
     return Product(
+        id=id,
         name = name,
         description = description,
         idCategory = idCategory,
-        price = price
-    )
+        price = price,
+        imagesToUpdate = imagesToUpdate.toList(),
+        image1 = image1,
+        image2 = image2,
+        )
 }

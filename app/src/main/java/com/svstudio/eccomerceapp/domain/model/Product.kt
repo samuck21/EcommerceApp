@@ -14,6 +14,8 @@ data class Product(
     @SerializedName("image1")  val image1: String ? = null,
     @SerializedName("image2")  val image2: String ? =null,
     @SerializedName("price")  val price: Double,
+    @SerializedName("images_to_update")  val imagesToUpdate: List<Int>? = listOf(),
+
     ): Serializable{
     fun toJson():String = Gson().toJson(Product(
         id,
@@ -28,7 +30,8 @@ data class Product(
             image2,
             StandardCharsets.UTF_8.toString()
         ) else "",
-        price
+        price,
+        imagesToUpdate,
     ))
     companion object{
         fun fromJson(data: String): Product = Gson().fromJson(data, Product::class.java)
