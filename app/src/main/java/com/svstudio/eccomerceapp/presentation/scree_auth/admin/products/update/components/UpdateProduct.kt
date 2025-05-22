@@ -20,7 +20,7 @@ fun UpdateProduct(vm: AdminProductUpdateViewModel = hiltViewModel()) {
             // 401 TOKEN
             Log.d("UpdateUser", "Data: ${response.data}")
 
-            Toast.makeText(LocalContext.current, "Los datos se han creado correctamete", Toast.LENGTH_LONG).show()
+            Toast.makeText(LocalContext.current, "Los datos los datos e han actualizado correctamente", Toast.LENGTH_LONG).show()
         }
         is Resource.Failure -> {
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()

@@ -31,7 +31,11 @@ interface ProductsService {
         @Part("price")price: RequestBody,
     ): Response<Product>
 
-
+    @PUT("products/{id}")
+    suspend fun  update(
+        @Path("id") id: String,
+        @Body product: Product
+    ): Response<Product>
 
 
 

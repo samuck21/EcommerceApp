@@ -30,6 +30,12 @@ class ProductsRepositoryImpl(private val productsRemoteDataSource: ProductsRemot
     )
     override suspend fun update(
         id: String,
+        product: Product
+    ): Resource<Product> = ResponseToRequest.send(
+        productsRemoteDataSource.update(id,product)
+    )
+    override suspend fun updateWithImage(
+        id: String,
         product: Product,
         files: List<File>?
     ): Resource<Product> {

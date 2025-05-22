@@ -18,6 +18,7 @@ import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryWithIma
 import com.svstudio.eccomerceapp.domain.usecase.products.CreateProductUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.FindByCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.ProductsUseCase
+import com.svstudio.eccomerceapp.domain.usecase.products.UpdateProductUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,7 +47,8 @@ object UseCaseModule {
     @Provides
     fun provideProductsUseCase(productsRepository: ProductsRepository) = ProductsUseCase(
         createProduct = CreateProductUseCase(productsRepository),
-        findByCategory = FindByCategoryUseCase(productsRepository)
+        findByCategory = FindByCategoryUseCase(productsRepository),
+        updateProduct = UpdateProductUseCase(productsRepository)
 
     )
 }

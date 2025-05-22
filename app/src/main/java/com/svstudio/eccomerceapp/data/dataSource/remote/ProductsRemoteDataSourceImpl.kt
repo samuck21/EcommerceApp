@@ -37,13 +37,18 @@ class ProductsRemoteDataSourceImpl(private  val productsService: ProductsService
         return  productsService.create(images, nameData, descriptionData,ideCategoryData,priceData)
     }
 
-    override suspend fun update(
+    override suspend fun updateWithImage(
         id: String,
         product: Product,
         files: List<File>?
     ): Response<Product> {
         TODO("Not yet implemented")
     }
+
+    override suspend fun update(
+        id: String,
+        product: Product,
+    ): Response<Product> = productsService.update(id,product)
 
     override suspend fun delete(id: String): Response<Unit> {
         TODO("Not yet implemented")

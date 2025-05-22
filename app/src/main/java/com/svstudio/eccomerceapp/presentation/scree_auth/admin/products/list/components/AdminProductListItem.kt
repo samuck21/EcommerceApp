@@ -8,9 +8,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -52,11 +57,34 @@ fun AdminProductListItem(navController: NavHostController, product: Product, vm:
                     Text("Volver a compar",
                         Modifier.weight(1f)
                             .clickable{
-                                navController.navigate(route = AdminCategoryScreen.ProductUpdate.passCategory(vm.category.toJson()))
+                                navController.navigate(route = AdminCategoryScreen.ProductUpdate.passProduct(vm.category.toJson()))
                             },
                         fontSize = 20.sp,
                         color = Color.Blue,
                         textAlign = TextAlign.End)
+                    Icon(
+                        imageVector = Icons.Default.Edit,
+                        contentDescription = "",
+                        modifier = Modifier
+                            .size(30.dp)
+                            .weight(1f)
+                            .clickable{
+                                navController.navigate(
+                                    route = AdminCategoryScreen.ProductUpdate.passProduct(product.toJson())
+                                )
+
+                            }
+                    )
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        contentDescription = "",
+                        modifier = Modifier
+                            .size(30.dp)
+                            .weight(1f)
+                            .clickable{
+
+                            }
+                    )
                 }
                 Divider(thickness = 2.dp,
                     color = Color.LightGray,
