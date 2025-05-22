@@ -5,7 +5,10 @@ import com.svstudio.eccomerceapp.data.dataSource.local.AuthLocalDataSourceImpl
 import com.svstudio.eccomerceapp.data.dataSource.local.AuthLocalDataSource
 import com.svstudio.eccomerceapp.data.dataSource.local.CategoriesLocalDataSource
 import com.svstudio.eccomerceapp.data.dataSource.local.CategoriesLocalDataSourceImpl
+import com.svstudio.eccomerceapp.data.dataSource.local.ProductsLocalDataSource
+import com.svstudio.eccomerceapp.data.dataSource.local.ProductsLocalDataSourceImpl
 import com.svstudio.eccomerceapp.data.dataSource.local.dao.CategoriesDao
+import com.svstudio.eccomerceapp.data.dataSource.local.dao.ProductsDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,4 +23,8 @@ object LocalDataModule {
     @Provides
     fun providerCategoriesLocalDataSource(categoriesDao: CategoriesDao) : CategoriesLocalDataSource =
         CategoriesLocalDataSourceImpl(categoriesDao)
+
+    @Provides
+    fun providerProductsLocalDataSource(productsDao: ProductsDao) : ProductsLocalDataSource =
+        ProductsLocalDataSourceImpl(productsDao)
 }
