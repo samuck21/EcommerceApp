@@ -97,6 +97,10 @@ class AdminProductUpdateViewModel @Inject constructor(
             productResponse = result
 
         }
+        files.clear()
+        file1 = null
+        file2 = null
+        state.imagesToUpdate.clear()
 
     }
 

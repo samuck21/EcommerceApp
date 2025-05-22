@@ -50,6 +50,11 @@ interface ProductsService {
         @Body product: Product
     ): Response<Product>
 
+    @DELETE("products/{id}")
+    suspend fun  delete(
+        @Path("id") id: String
+    ): Response<Unit>
+
 
 
 

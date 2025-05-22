@@ -27,4 +27,5 @@ fun AdminProductListContent(navController:NavHostController, paddingValues: Padd
         }
 
     }
+    DeleteProduct()
 }

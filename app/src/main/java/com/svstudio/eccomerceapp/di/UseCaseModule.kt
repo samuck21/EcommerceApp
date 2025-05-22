@@ -16,6 +16,7 @@ import com.svstudio.eccomerceapp.domain.usecase.categories.GetCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryWithImageUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.CreateProductUseCase
+import com.svstudio.eccomerceapp.domain.usecase.products.DeleteProductUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.FindByCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.ProductsUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.UpdateProductUseCase
@@ -51,6 +52,7 @@ object UseCaseModule {
         findByCategory = FindByCategoryUseCase(productsRepository),
         updateProduct = UpdateProductUseCase(productsRepository),
         updateProductWithImage = UpdateProductWithImageUseCase(productsRepository),
+        deleteProduct = DeleteProductUseCase(productsRepository)
 
     )
 }

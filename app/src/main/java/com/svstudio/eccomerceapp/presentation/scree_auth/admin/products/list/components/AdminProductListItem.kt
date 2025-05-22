@@ -82,7 +82,7 @@ fun AdminProductListItem(navController: NavHostController, product: Product, vm:
                             .size(30.dp)
                             .weight(1f)
                             .clickable{
-
+                              vm.deleteProduct(product.id ?:"")
                             }
                     )
                 }
