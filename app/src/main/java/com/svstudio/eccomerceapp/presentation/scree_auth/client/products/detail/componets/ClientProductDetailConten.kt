@@ -80,7 +80,7 @@ fun ClientProductDetailContent(paddingValues: PaddingValues,vm: ClientProductDet
                         modifier = Modifier.fillMaxWidth().padding(20.dp, top = 10.dp)
                     )
                     androidx.compose.material3.Text(
-                        text = "Precio",
+                        text = "Precio:${vm.price}",
                         fontSize = 20.sp,
                         color = Color(0xFF00C8DF),
                         fontWeight = FontWeight.Bold,
@@ -92,7 +92,7 @@ fun ClientProductDetailContent(paddingValues: PaddingValues,vm: ClientProductDet
                         modifier = Modifier.fillMaxWidth().padding(20.dp, top = 10.dp)
                     )
                     androidx.compose.material3.Text(
-                        text = "Tu orden",
+                        text = "Cantidad:${vm.quantity}",
                         fontSize = 20.sp,
                         color = Color(0xFF00C8DF),
                         fontWeight = FontWeight.Bold,

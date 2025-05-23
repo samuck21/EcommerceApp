@@ -26,6 +26,7 @@ import com.svstudio.eccomerceapp.domain.usecase.products.UpdateProductWithImageU
 import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.AddUseCase
 import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.DeleteUseCase
 import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.FindAllShoppingBagUseCase
+import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.FindByIdShoppingBagUseCase
 import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.ShoppingBagUseCase
 import dagger.Module
 import dagger.Provides
@@ -67,6 +68,8 @@ object UseCaseModule {
         ShoppingBagUseCase(
             add = AddUseCase(shoppingBagRepository),
             delete = DeleteUseCase(shoppingBagRepository),
-            findAll = FindAllShoppingBagUseCase(shoppingBagRepository)
+            findAll = FindAllShoppingBagUseCase(shoppingBagRepository),
+            findById = FindByIdShoppingBagUseCase(shoppingBagRepository)
+
         )
 }

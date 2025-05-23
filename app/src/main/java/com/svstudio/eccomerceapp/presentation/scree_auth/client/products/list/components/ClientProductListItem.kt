@@ -32,13 +32,19 @@ import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
 import com.svstudio.eccomerceapp.domain.model.Product
 import com.svstudio.eccomerceapp.presentation.navigation.screen.admin.AdminCategoryScreen
+import com.svstudio.eccomerceapp.presentation.navigation.screen.client.ClientCategoryScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.list.AdminProductListViewModel
 import com.svstudio.eccomerceapp.presentation.scree_auth.client.products.list.ClientProductListViewModel
 
 @Composable
 fun ClientProductListItem(navController: NavHostController, product: Product, vm: ClientProductListViewModel= hiltViewModel()){
     Column (modifier = Modifier.padding(top = 20.dp
-    )){
+    )
+        .clickable{
+            navController.navigate(route = ClientCategoryScreen.ProductDetail.passCategory(product.toJson()) )
+        }
+
+    ){
         ElevatedCard(
             elevation = CardDefaults.cardElevation(
                 defaultElevation = 6.dp

@@ -9,6 +9,7 @@ import androidx.navigation.navigation
 import com.svstudio.eccomerceapp.presentation.navigation.Graph
 import com.svstudio.eccomerceapp.presentation.navigation.screen.admin.AdminCategoryScreen
 import com.svstudio.eccomerceapp.presentation.navigation.screen.client.ClientCategoryScreen
+import com.svstudio.eccomerceapp.presentation.navigation.screen.client.ClientProductsScreen
 import com.svstudio.eccomerceapp.presentation.navigation.screen.roles.RolesScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.category.create.AdminCategoryCreateScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.category.update.AdminCategoryUpdateScreen
@@ -17,6 +18,7 @@ import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.create.A
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.list.AdminProductListScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.update.AdminProductUpdateScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.client.home.ClientHomeScreen
+import com.svstudio.eccomerceapp.presentation.scree_auth.client.products.detail.ClientProductDetailScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.client.products.listByCategory.ClientProductByCategoryListScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.roles.RolesScreen
 
@@ -35,6 +37,17 @@ fun NavGraphBuilder.ClientCategoryNavGraph(navController: NavHostController){
         ) {
             it.arguments?.getString("category")?.let {
                 ClientProductByCategoryListScreen(navController = navController,it)
+            }
+
+        }
+        composable( route = ClientCategoryScreen.ProductDetail.route,
+            arguments = listOf(navArgument ("product") {
+                type = NavType.StringType
+            })
+
+        ) {
+            it.arguments?.getString("product")?.let {
+                ClientProductDetailScreen(navController = navController,it)
             }
 
         }

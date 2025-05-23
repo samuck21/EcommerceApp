@@ -11,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class ShoppingBagRepositoryImpl(private  val localDataSource: ShoppingBagLocalDataSource): ShoppingBagRepository {
     override suspend fun add(product: ShoppingBagProduct) {
@@ -36,5 +37,12 @@ class ShoppingBagRepositoryImpl(private  val localDataSource: ShoppingBagLocalDa
         localDataSource.findAll().collect {
             emit(it.map { entity -> entity.toShoppingBagProduct() })
         }
+    }
+
+    override fun findById(id: String): ShoppingBagProduct {
+        val data = runBlocking (context = Dispatchers.IO ) {
+            localDataSource.findById(id).toShoppingBagProduct()
+        }
+      return data
     }
 }

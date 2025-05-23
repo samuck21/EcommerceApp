@@ -25,7 +25,8 @@ class ClientProductDetailViewModel @Inject constructor(
     var productImage = listOf<String>(product.image1 ?:"",product.image2 ?:"")
     var quantity by mutableStateOf(0)
         private  set
-
+    var price by mutableStateOf(0.0)
+        private  set
     init {
         getShoppingBag()
     }
@@ -37,6 +38,11 @@ class ClientProductDetailViewModel @Inject constructor(
            quantity = quantity-1
        }
 
+    }
+    fun getShoppingBagProduct() = viewModelScope.launch {
+        val result = shoppingBagUseCase.findById(product.id ?:"")
+        quantity = result.quantity
+        price = product.price * quantity
     }
     fun getShoppingBag() = viewModelScope.launch {
         shoppingBagUseCase.findAll().collect {
