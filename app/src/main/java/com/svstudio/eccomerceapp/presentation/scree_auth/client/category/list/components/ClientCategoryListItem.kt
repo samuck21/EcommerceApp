@@ -2,6 +2,7 @@ package com.svstudio.eccomerceapp.presentation.scree_auth.client.category.list.c
 
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
 import com.svstudio.eccomerceapp.domain.model.Category
+import com.svstudio.eccomerceapp.presentation.navigation.screen.client.ClientCategoryScreen
 
 @Composable
 fun ClientCategoryListItem(navController: NavHostController,category: Category){
@@ -30,7 +32,12 @@ fun ClientCategoryListItem(navController: NavHostController,category: Category){
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),
-        modifier = Modifier.height(250.dp).padding(start = 10.dp, end = 5.dp, top = 5.dp)
+        modifier = Modifier
+            .height(250.dp)
+            .padding(start = 10.dp, end = 5.dp, top = 5.dp)
+            .clickable{
+                navController.navigate(route = ClientCategoryScreen.ProductList.passCategory(category.toJson()))
+            }
     ) {
         Box(modifier = Modifier.fillMaxSize()){
             AsyncImage( model = category.image

@@ -1,7 +1,6 @@
-package com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.list
+package com.svstudio.eccomerceapp.presentation.scree_auth.client.products.listByCategory
 
 import android.util.Log
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -14,15 +13,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.svstudio.eccomerceapp.domain.model.Category
-import com.svstudio.eccomerceapp.presentation.navigation.Graph
 import com.svstudio.eccomerceapp.presentation.navigation.screen.admin.AdminCategoryScreen
-import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.list.components.AdminProductListContent
-import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.list.components.DeleteProduct
 import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.list.components.GetProducts
-import kotlin.math.log
+import com.svstudio.eccomerceapp.presentation.scree_auth.client.products.listByCategory.components.GetProductsByCategory
 
 @Composable
-fun AdminProductListScreen(navController: NavHostController,category: String){
+fun ClientProductByCategoryListScreen(navController: NavHostController,category: String){
     Log.d("AdminProductListScreen","Category:${category}")
     val categoryParse = Category.fromJson(category).toJson()
     Scaffold (
@@ -41,8 +37,7 @@ fun AdminProductListScreen(navController: NavHostController,category: String){
             }
         }
     ) { paddingValues ->
-        GetProducts(navController = navController, paddingValues = paddingValues)
+        GetProductsByCategory(navController = navController, paddingValues = paddingValues)
     }
-    DeleteProduct()
 
 }

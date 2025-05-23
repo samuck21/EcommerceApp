@@ -21,6 +21,10 @@ interface ProductsService {
     suspend fun  findByCategory(
         @Path("id_category") idCategory: String
     ): Response<List<Product>>
+
+    @GET("products")
+    suspend fun  findAll(): Response<List<Product>>
+
     @Multipart
     @POST("products")
     suspend fun  create(
