@@ -3,6 +3,7 @@ package com.svstudio.eccomerceapp.di
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
 import com.svstudio.eccomerceapp.domain.repository.ProductsRepository
+import com.svstudio.eccomerceapp.domain.repository.ShoppingBagRepository
 import com.svstudio.eccomerceapp.domain.usecase.auth.AuthUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.GetSessionDataUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.LoginUseCase
@@ -22,6 +23,10 @@ import com.svstudio.eccomerceapp.domain.usecase.products.FindByCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.ProductsUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.UpdateProductUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.UpdateProductWithImageUseCase
+import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.AddUseCase
+import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.DeleteUseCase
+import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.FindAllShoppingBagUseCase
+import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.ShoppingBagUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -57,4 +62,11 @@ object UseCaseModule {
         deleteProduct = DeleteProductUseCase(productsRepository)
 
     )
+    @Provides
+    fun provideShoppingBagUseCase(shoppingBagRepository: ShoppingBagRepository) =
+        ShoppingBagUseCase(
+            add = AddUseCase(shoppingBagRepository),
+            delete = DeleteUseCase(shoppingBagRepository),
+            findAll = FindAllShoppingBagUseCase(shoppingBagRepository)
+        )
 }

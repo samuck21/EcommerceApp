@@ -5,13 +5,16 @@ import com.svstudio.eccomerceapp.data.repository.CategoriesRepositoryImpl
 import com.svstudio.eccomerceapp.data.dataSource.local.AuthLocalDataSource
 import com.svstudio.eccomerceapp.data.dataSource.local.CategoriesLocalDataSource
 import com.svstudio.eccomerceapp.data.dataSource.local.ProductsLocalDataSource
+import com.svstudio.eccomerceapp.data.dataSource.local.ShoppingBagLocalDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.AuthRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.CategoriesRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.ProductsRemoteDataSource
 import com.svstudio.eccomerceapp.data.repository.ProductsRepositoryImpl
+import com.svstudio.eccomerceapp.data.repository.ShoppingBagRepositoryImpl
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
 import com.svstudio.eccomerceapp.domain.repository.ProductsRepository
+import com.svstudio.eccomerceapp.domain.repository.ShoppingBagRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,4 +40,8 @@ object RepositoryModule {
         productsRemoteDataSource: ProductsRemoteDataSource,
         productsLocalDataSource: ProductsLocalDataSource
     ): ProductsRepository = ProductsRepositoryImpl(productsRemoteDataSource,productsLocalDataSource)
+    @Provides
+    fun provideShoppingBagRepository(
+        shoppingBagLocalDataSource: ShoppingBagLocalDataSource
+    ): ShoppingBagRepository = ShoppingBagRepositoryImpl(shoppingBagLocalDataSource)
 }

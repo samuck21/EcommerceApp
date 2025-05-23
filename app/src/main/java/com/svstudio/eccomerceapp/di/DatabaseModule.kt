@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.svstudio.eccomerceapp.data.dataSource.local.dao.CategoriesDao
 import com.svstudio.eccomerceapp.data.dataSource.local.dao.ProductsDao
+import com.svstudio.eccomerceapp.data.dataSource.local.dao.ShoppingBagDao
 import com.svstudio.eccomerceapp.data.dataSource.local.datastore.db.EcommerceDB
 import dagger.Module
 import dagger.Provides
@@ -25,4 +26,8 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideProductsDao(db: EcommerceDB): ProductsDao= db.productsDao()
+
+    @Provides
+    @Singleton
+    fun provideShoppingBagDao(db: EcommerceDB): ShoppingBagDao= db.shoppingBagDao()
 }

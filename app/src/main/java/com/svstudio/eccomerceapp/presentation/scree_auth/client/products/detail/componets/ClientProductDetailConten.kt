@@ -2,6 +2,7 @@ package com.svstudio.eccomerceapp.presentation.scree_auth.client.products.detail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -118,17 +119,26 @@ fun ClientProductDetailContent(paddingValues: PaddingValues,vm: ClientProductDet
                             Row(modifier = Modifier.fillMaxSize().padding(start = 15.dp), verticalAlignment = Alignment.CenterVertically) {
                                 androidx.compose.material3.Text(
                                     "-",
-                                    modifier = Modifier.weight(1f),
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .clickable{
+                                            vm.remove()
+                                        }
+                                    ,
                                     color = Color.White
                                 )
                                 androidx.compose.material3.Text(
-                                    "0",
+                                    text = vm.quantity.toString(),
                                     modifier = Modifier.weight(1f),
                                     color = Color.White
                                 )
                                 androidx.compose.material3.Text(
                                     "+",
-                                    modifier = Modifier.weight(1f),
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .clickable{
+                                           vm.saveItem()
+                                        },
                                     color = Color.White
                                 )
                             }
