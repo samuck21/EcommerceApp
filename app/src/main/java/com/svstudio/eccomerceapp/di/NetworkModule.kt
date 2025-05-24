@@ -34,9 +34,10 @@ object NetworkModule {
         return retrofit.create(CategoriesService::class.java)
     }
 
+
     @Provides
     @Singleton
-    fun provideProductsService(retrofit: Retrofit): ProductsService{
+    fun provideProductsService(retrofit: Retrofit): ProductsService {
         return retrofit.create(ProductsService::class.java)
     }
 }

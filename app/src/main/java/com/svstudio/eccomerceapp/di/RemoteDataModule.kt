@@ -25,6 +25,5 @@ object RemoteDataModule {
     fun provideCategoriesRemoteDataSource(categoriesService: CategoriesService): CategoriesRemoteDataSource =
         CategoriesRemoteDataSourceImpl(categoriesService)
     @Provides
-    fun provideProductsRemoteDataSource(productsService: ProductsService): ProductsRemoteDataSource =
-        ProductsRemoteDataSourceImpl(productsService)
+    fun provideProductsRemoteDataSource(productsService: ProductsService): ProductsRemoteDataSource = ProductsRemoteDataSourceImpl(productsService)
 }

@@ -7,7 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.navigation.navigation
 import com.svstudio.eccomerceapp.presentation.navigation.Graph
-import com.svstudio.eccomerceapp.presentation.navigation.screen.client.profile.ProfileScreen
+import com.svstudio.eccomerceapp.presentation.navigation.screen.profile.ProfileScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.profile.update.ProfileUpdateScreen
 
 fun NavGraphBuilder.ProfileNavGraph(navController: NavHostController) {

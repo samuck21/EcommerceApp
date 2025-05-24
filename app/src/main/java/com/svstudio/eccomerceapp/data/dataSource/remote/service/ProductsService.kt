@@ -27,12 +27,12 @@ interface ProductsService {
 
     @Multipart
     @POST("products")
-    suspend fun  create(
-        @Part file: Array< MultipartBody.Part?>,
+    suspend fun create(
+        @Part files: Array<MultipartBody.Part?>,
         @Part("name") name: RequestBody,
-        @Part("description")description: RequestBody,
-        @Part("id_category")idCategory: RequestBody,
-        @Part("price")price: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("id_category") idCategory: RequestBody,
+        @Part("price") price: RequestBody,
     ): Response<Product>
 
     @Multipart

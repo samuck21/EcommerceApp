@@ -40,13 +40,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
 import com.svstudio.eccomerceapp.MainActivity
 import com.svstudio.eccomerceapp.R
-import com.svstudio.eccomerceapp.presentation.navigation.Graph
-import com.svstudio.eccomerceapp.presentation.navigation.screen.client.profile.ProfileScreen
+import com.svstudio.eccomerceapp.presentation.navigation.screen.profile.ProfileScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.profile.info.ProfileViewModel
 
 @SuppressLint("ContextCastToActivity")

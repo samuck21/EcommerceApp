@@ -97,7 +97,7 @@ fun  AdminProductCreateContent(paddingValues: PaddingValues,vm: AdminProductCrea
                                 .clip(CircleShape)
                                 .clickable{
                                     stateDialog.value = true
-                                    stateDialogImageNumber.value =2
+                                    stateDialogImageNumber.value =1
                                 },
                             painter = painterResource(id = com.svstudio.eccomerceapp.R.drawable.user_image),
                             contentDescription = ""
@@ -110,6 +110,7 @@ fun  AdminProductCreateContent(paddingValues: PaddingValues,vm: AdminProductCrea
                                 .clip(CircleShape)
                                 .clickable{
                                     stateDialog.value =true
+                                    stateDialogImageNumber.value = 2
                                 },
                             model = state.image1,
                             contentDescription = "",
@@ -122,6 +123,7 @@ fun  AdminProductCreateContent(paddingValues: PaddingValues,vm: AdminProductCrea
                                 .clip(CircleShape)
                                 .clickable{
                                     stateDialog.value = true
+                                    stateDialogImageNumber.value = 2
                                 },
                             painter = painterResource(id = com.svstudio.eccomerceapp.R.drawable.user_image),
                             contentDescription = ""
@@ -190,7 +192,7 @@ fun  AdminProductCreateContent(paddingValues: PaddingValues,vm: AdminProductCrea
                         )
                         TextField(
                             value = state.price.toString(),
-                            onValueChange = {vm.onDescriptionInput(it)},
+                            onValueChange = {vm.onPriceInput(it)},
                             modifier = Modifier.fillMaxWidth(),
                             label = { Text("Descripcion del prodcuto") },
                             colors = TextFieldDefaults.colors(
@@ -214,10 +216,10 @@ fun  AdminProductCreateContent(paddingValues: PaddingValues,vm: AdminProductCrea
                         )
                         TextField(
                             value = state.description,
-                            onValueChange = {vm.onPriceInput(it)},
+                            onValueChange = {vm.onDescriptionInput(it)},
                             modifier = Modifier.fillMaxWidth(),
 
-                            label = { Text("Descripcion del prodcuto") },
+                            label = { Text("Descripcion del producto") },
                             colors = TextFieldDefaults.colors(
                                 disabledContainerColor = Color.White,
                                 focusedContainerColor = Color.White,

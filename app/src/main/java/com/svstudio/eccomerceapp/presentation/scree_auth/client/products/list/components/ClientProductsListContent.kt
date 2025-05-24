@@ -27,5 +27,4 @@ fun ClientProductListContent(navController:NavHostController, paddingValues: Pad
         }
 
     }
-    DeleteProduct()
 }

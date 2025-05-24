@@ -75,23 +75,21 @@ class ProductsRepositoryImpl(
             }
         }
     }.flowOn(Dispatchers.IO)
-    override suspend fun create(
-        product: Product,
-        files: List<File>
-    ): Resource<Product> {
+    override suspend fun create(product: Product, files: List<File>): Resource<Product> {
 
-        ResponseToRequest.send(productsRemoteDataSource.create(product,files)).run {
-            return  when(this){
-                is Resource.Success ->{
+        ResponseToRequest.send(productsRemoteDataSource.create(product, files)).run {
+            return when(this) {
+                is Resource.Success -> {
                     localDataSource.insert(this.data.toProductEntity())
                     Resource.Success(this.data)
                 }
                 else -> {
-                    Resource.Failure("Error desconocido ")
+                    Resource.Failure("Error desconocido")
                 }
             }
         }
-        }
+
+    }
 
     override suspend fun update(
         id: String,
