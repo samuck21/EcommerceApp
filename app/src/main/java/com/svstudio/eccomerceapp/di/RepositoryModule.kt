@@ -6,11 +6,14 @@ import com.svstudio.eccomerceapp.data.dataSource.local.AuthLocalDataSource
 import com.svstudio.eccomerceapp.data.dataSource.local.CategoriesLocalDataSource
 import com.svstudio.eccomerceapp.data.dataSource.local.ProductsLocalDataSource
 import com.svstudio.eccomerceapp.data.dataSource.local.ShoppingBagLocalDataSource
+import com.svstudio.eccomerceapp.data.dataSource.remote.AddressRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.AuthRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.CategoriesRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.ProductsRemoteDataSource
+import com.svstudio.eccomerceapp.data.repository.AddressRepositoryImpl
 import com.svstudio.eccomerceapp.data.repository.ProductsRepositoryImpl
 import com.svstudio.eccomerceapp.data.repository.ShoppingBagRepositoryImpl
+import com.svstudio.eccomerceapp.domain.repository.AddressRepository
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
 import com.svstudio.eccomerceapp.domain.repository.ProductsRepository
@@ -44,4 +47,9 @@ object RepositoryModule {
     fun provideShoppingBagRepository(
         shoppingBagLocalDataSource: ShoppingBagLocalDataSource
     ): ShoppingBagRepository = ShoppingBagRepositoryImpl(shoppingBagLocalDataSource)
+    @Provides
+    fun provideAddressRepository(
+        addressRemoteDataSource: AddressRemoteDataSource
+    ): AddressRepository = AddressRepositoryImpl(addressRemoteDataSource)
+
 }

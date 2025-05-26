@@ -1,9 +1,13 @@
 package com.svstudio.eccomerceapp.di
 
+import com.svstudio.eccomerceapp.domain.repository.AddressRepository
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
 import com.svstudio.eccomerceapp.domain.repository.ProductsRepository
 import com.svstudio.eccomerceapp.domain.repository.ShoppingBagRepository
+import com.svstudio.eccomerceapp.domain.usecase.address.AddressUseCase
+import com.svstudio.eccomerceapp.domain.usecase.address.CreateAddressUseCase
+import com.svstudio.eccomerceapp.domain.usecase.address.FindByUserAddressUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.AuthUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.GetSessionDataUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.LoginUseCase
@@ -71,5 +75,11 @@ object UseCaseModule {
             findAll = FindAllShoppingBagUseCase(shoppingBagRepository),
             findById = FindByIdShoppingBagUseCase(shoppingBagRepository)
 
+        )
+    @Provides
+    fun provideAddressUseCase(addressRepository: AddressRepository) =
+        AddressUseCase(
+            createAddress = CreateAddressUseCase(addressRepository),
+            findByUserAddress = FindByUserAddressUseCase(addressRepository)
         )
 }

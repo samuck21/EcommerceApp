@@ -6,6 +6,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.svstudio.eccomerceapp.presentation.navigation.Graph
 import com.svstudio.eccomerceapp.presentation.navigation.screen.client.ShoppingBagScreen
+import com.svstudio.eccomerceapp.presentation.scree_auth.client.address.create.ClientAddressCreateScreen
+import com.svstudio.eccomerceapp.presentation.scree_auth.client.address.list.ClientAddressListScreen
 import com.svstudio.eccomerceapp.presentation.scree_auth.client.shopping_bag.ClientShoppingBagScreen
 
 fun NavGraphBuilder.ShoppingBagNavGraph(navController: NavHostController){
@@ -21,6 +23,14 @@ fun NavGraphBuilder.ShoppingBagNavGraph(navController: NavHostController){
         ) {
 
             ClientShoppingBagScreen(navController)
+        }
+        composable( route = ShoppingBagScreen.AddressList.route
+        ) {
+            ClientAddressListScreen(navController)
+        }
+        composable( route = ShoppingBagScreen.AddressCreate.route
+        ) {
+            ClientAddressCreateScreen(navController)
         }
 
 

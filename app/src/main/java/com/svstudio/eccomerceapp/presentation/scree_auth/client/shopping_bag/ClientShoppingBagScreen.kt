@@ -22,10 +22,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.svstudio.eccomerceapp.presentation.navigation.screen.client.ShoppingBagScreen
+import com.svstudio.eccomerceapp.presentation.scree_auth.client.shopping_bag.componets.ClientShoppingBagBottonBar
 import com.svstudio.eccomerceapp.presentation.scree_auth.client.shopping_bag.componets.ClientShoppingBagContent
 
 @Composable
 fun ClientShoppingBagScreen(navController: NavHostController, vm: ClientShoppingBagViewModel = hiltViewModel()) {
+    vm.getShoppingBag()
     Scaffold(
         topBar = {
             Icon( imageVector = Icons.Default.ArrowBack,
@@ -35,37 +38,7 @@ fun ClientShoppingBagScreen(navController: NavHostController, vm: ClientShopping
                 })
         },
         bottomBar = {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(color = Color.LightGray),
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column (
-                    modifier = Modifier.run { padding(vertical = 15.dp) },
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text("Hola")
-                    Text(
-                        text = "TOTAL",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 17.sp
-                    )
-                    Text(
-                        text = vm.total.toString() + "$",
-                        fontSize = 16.sp
-                    )
-                }
-
-                Button(
-                    modifier = Modifier
-                        .padding(vertical = 15.dp),
-                    onClick = {  }
-                ){
-                    Text( text = "Confirmar orden")
-                }
-            }
+            ClientShoppingBagBottonBar(navController)
         }
 
     ) { paddingValues ->

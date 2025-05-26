@@ -1,5 +1,6 @@
 package com.svstudio.eccomerceapp.di
 
+import com.svstudio.eccomerceapp.data.dataSource.remote.service.AddressService
 import com.svstudio.eccomerceapp.data.dataSource.remote.service.AuthService
 import com.svstudio.eccomerceapp.data.dataSource.remote.service.CategoriesService
 import com.svstudio.eccomerceapp.data.dataSource.remote.service.ProductsService
@@ -39,5 +40,10 @@ object NetworkModule {
     @Singleton
     fun provideProductsService(retrofit: Retrofit): ProductsService {
         return retrofit.create(ProductsService::class.java)
+    }
+    @Provides
+    @Singleton
+    fun provideAddressService(retrofit: Retrofit): AddressService {
+        return retrofit.create(AddressService::class.java)
     }
 }

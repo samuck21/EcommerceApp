@@ -41,7 +41,7 @@ class ClientProductDetailViewModel @Inject constructor(
     }
     fun getShoppingBagProduct() = viewModelScope.launch {
         val result = shoppingBagUseCase.findById(product.id ?:"")
-        quantity = result.quantity
+        quantity = result?.quantity ?:0  //?
         price = product.price * quantity
     }
     fun getShoppingBag() = viewModelScope.launch {
