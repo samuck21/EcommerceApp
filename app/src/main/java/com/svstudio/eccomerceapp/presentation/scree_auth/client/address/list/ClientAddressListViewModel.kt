@@ -7,6 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.svstudio.eccomerceapp.domain.model.Address
+import com.svstudio.eccomerceapp.domain.model.User
 import com.svstudio.eccomerceapp.domain.repository.AddressRepository
 import com.svstudio.eccomerceapp.domain.until.Resource
 import com.svstudio.eccomerceapp.domain.usecase.address.AddressUseCase
@@ -24,9 +25,17 @@ class ClientAddressListViewModel @Inject constructor(
     ViewModel (){
         var addressResponse by mutableStateOf<Resource<List<Address>>?>(null)
             private set
+    var selectedAddress by mutableStateOf("")
+        private set
+
+    var user: User? = null
     fun getSessionData() = viewModelScope.launch {
-        val user = authUseCase.getSessionData().first().user
+       user = authUseCase.getSessionData().first().user
+        Log.d("ClientAddressListViewModel","User:${user}")
         getAddress(user?.id?: "")
+        if(user?.address != null){
+            selectedAddress = user?.address?.id ?:""
+        }
     }
     fun getAddress(idUser: String) = viewModelScope.launch {
         addressResponse = Resource.Loading
@@ -35,7 +44,11 @@ class ClientAddressListViewModel @Inject constructor(
             addressResponse = it
         }
     }
-
+    fun onSelectedAddressInput(address: Address) = viewModelScope.launch {
+        selectedAddress = address.id ?:""
+        user?.address = address
+        if(user != null) authUseCase.updateSession(user!!)
+    }
 
 
 

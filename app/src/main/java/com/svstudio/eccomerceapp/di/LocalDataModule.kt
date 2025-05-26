@@ -1,5 +1,7 @@
 package com.svstudio.eccomerceapp.di
 
+import com.svstudio.eccomerceapp.data.dataSource.local.AddressLocalDataSource
+import com.svstudio.eccomerceapp.data.dataSource.local.AddressLocalDataSourceImpl
 import com.svstudio.eccomerceapp.data.dataSource.local.datastore.AuthDatastore
 import com.svstudio.eccomerceapp.data.dataSource.local.AuthLocalDataSourceImpl
 import com.svstudio.eccomerceapp.data.dataSource.local.AuthLocalDataSource
@@ -9,6 +11,7 @@ import com.svstudio.eccomerceapp.data.dataSource.local.ProductsLocalDataSource
 import com.svstudio.eccomerceapp.data.dataSource.local.ProductsLocalDataSourceImpl
 import com.svstudio.eccomerceapp.data.dataSource.local.ShoppingBagLocalDataSource
 import com.svstudio.eccomerceapp.data.dataSource.local.ShoppingBagLocalDataSourceImpl
+import com.svstudio.eccomerceapp.data.dataSource.local.dao.AddressDao
 import com.svstudio.eccomerceapp.data.dataSource.local.dao.CategoriesDao
 import com.svstudio.eccomerceapp.data.dataSource.local.dao.ProductsDao
 import com.svstudio.eccomerceapp.data.dataSource.local.dao.ShoppingBagDao
@@ -34,4 +37,8 @@ object LocalDataModule {
     @Provides
     fun providerShoppingBagLocalDataSource(shoppingBagDao: ShoppingBagDao): ShoppingBagLocalDataSource=
         ShoppingBagLocalDataSourceImpl(shoppingBagDao)
+
+    @Provides
+    fun providerAddressLocalDataSource(addressDao: AddressDao): AddressLocalDataSource=
+        AddressLocalDataSourceImpl(addressDao)
 }

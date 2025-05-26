@@ -1,5 +1,6 @@
 package com.svstudio.eccomerceapp.di
 
+import com.svstudio.eccomerceapp.data.dataSource.local.AddressLocalDataSource
 import com.svstudio.eccomerceapp.data.repository.AuthRepositoryImpl
 import com.svstudio.eccomerceapp.data.repository.CategoriesRepositoryImpl
 import com.svstudio.eccomerceapp.data.dataSource.local.AuthLocalDataSource
@@ -49,7 +50,8 @@ object RepositoryModule {
     ): ShoppingBagRepository = ShoppingBagRepositoryImpl(shoppingBagLocalDataSource)
     @Provides
     fun provideAddressRepository(
-        addressRemoteDataSource: AddressRemoteDataSource
-    ): AddressRepository = AddressRepositoryImpl(addressRemoteDataSource)
+        addressRemoteDataSource: AddressRemoteDataSource,
+        addressLocalDataSource: AddressLocalDataSource
+    ): AddressRepository = AddressRepositoryImpl(addressRemoteDataSource,addressLocalDataSource)
 
 }

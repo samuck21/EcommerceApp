@@ -14,6 +14,7 @@ import com.svstudio.eccomerceapp.domain.usecase.auth.LoginUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.LogoutUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.RegisterUseCase
 import com.svstudio.eccomerceapp.domain.usecase.auth.SaveSessionUseCase
+import com.svstudio.eccomerceapp.domain.usecase.auth.UpdateSessionUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.CategoriesUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.CreateCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.DeleteCategoryUseCase
@@ -46,7 +47,8 @@ object UseCaseModule {
         register = RegisterUseCase(authRepository),
         saveSession = SaveSessionUseCase(authRepository),
         getSessionData = GetSessionDataUseCase(authRepository),
-        logout = LogoutUseCase(authRepository)
+        logout = LogoutUseCase(authRepository),
+        updateSession = UpdateSessionUseCase(authRepository)
     )
     @Provides
     fun provideCategoriesUseCase(categoriesRepository: CategoriesRepository) = CategoriesUseCase(

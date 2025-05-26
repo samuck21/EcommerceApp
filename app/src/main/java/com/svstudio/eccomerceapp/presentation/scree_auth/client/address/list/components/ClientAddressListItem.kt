@@ -17,11 +17,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.svstudio.eccomerceapp.domain.model.Address
+import com.svstudio.eccomerceapp.presentation.scree_auth.client.address.list.ClientAddressListViewModel
 
 @Composable
 
-fun ClientAddressListItem(address: Address){
+fun ClientAddressListItem(address: Address, vm: ClientAddressListViewModel = hiltViewModel()){
     Column (
         modifier = Modifier.padding( horizontal =  20.dp)
     ){
@@ -30,9 +32,9 @@ fun ClientAddressListItem(address: Address){
             verticalAlignment = Alignment.CenterVertically
         ){
             RadioButton(
-                selected = false,
+                selected = address.id == vm.selectedAddress,
                 onClick = {
-
+                       vm.onSelectedAddressInput(address)
                 }
             )
         }
