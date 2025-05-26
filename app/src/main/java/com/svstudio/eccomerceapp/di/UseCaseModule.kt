@@ -3,6 +3,7 @@ package com.svstudio.eccomerceapp.di
 import com.svstudio.eccomerceapp.domain.repository.AddressRepository
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
+import com.svstudio.eccomerceapp.domain.repository.MercadoPagoRepository
 import com.svstudio.eccomerceapp.domain.repository.ProductsRepository
 import com.svstudio.eccomerceapp.domain.repository.ShoppingBagRepository
 import com.svstudio.eccomerceapp.domain.usecase.address.AddressUseCase
@@ -21,6 +22,9 @@ import com.svstudio.eccomerceapp.domain.usecase.categories.DeleteCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.GetCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryWithImageUseCase
+import com.svstudio.eccomerceapp.domain.usecase.mercadopago.GetIdentificationTypeUseCase
+import com.svstudio.eccomerceapp.domain.usecase.mercadopago.GetInstallmentsUseCase
+import com.svstudio.eccomerceapp.domain.usecase.mercadopago.MercadoPagoUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.CreateProductUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.DeleteProductUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.FindAllUseCase
@@ -83,5 +87,11 @@ object UseCaseModule {
         AddressUseCase(
             createAddress = CreateAddressUseCase(addressRepository),
             findByUserAddress = FindByUserAddressUseCase(addressRepository)
+        )
+    @Provides
+    fun provideMercadoPagoUseCase(mercadoPagoRepository: MercadoPagoRepository) =
+        MercadoPagoUseCase(
+            getIdentificationType = GetIdentificationTypeUseCase(mercadoPagoRepository),
+            getInstallments = GetInstallmentsUseCase(mercadoPagoRepository)
         )
 }

@@ -6,11 +6,14 @@ import com.svstudio.eccomerceapp.data.dataSource.remote.AuthRemoteDataSourceImpl
 import com.svstudio.eccomerceapp.data.dataSource.remote.CategoriesRemoteDataSourceImpl
 import com.svstudio.eccomerceapp.data.dataSource.remote.AuthRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.CategoriesRemoteDataSource
+import com.svstudio.eccomerceapp.data.dataSource.remote.MercadoPagoRemoteDataSource
+import com.svstudio.eccomerceapp.data.dataSource.remote.MercadoPagoRemoteDataSourceImpl
 import com.svstudio.eccomerceapp.data.dataSource.remote.ProductsRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.service.AuthService
 import com.svstudio.eccomerceapp.data.dataSource.remote.service.CategoriesService
 import com.svstudio.eccomerceapp.data.dataSource.remote.ProductsRemoteDataSourceImpl
 import com.svstudio.eccomerceapp.data.dataSource.remote.service.AddressService
+import com.svstudio.eccomerceapp.data.dataSource.remote.service.MercadoPagoService
 import com.svstudio.eccomerceapp.data.dataSource.remote.service.ProductsService
 import com.svstudio.eccomerceapp.domain.model.Product
 import dagger.Module
@@ -33,4 +36,8 @@ object RemoteDataModule {
     @Provides
     fun provideAddressRemoteDataSource(addressService: AddressService): AddressRemoteDataSource =
         AddressRemoteDataSourceImpl(addressService)
+
+    @Provides
+    fun provideMercadoPagoRemoteDataSource(mercadoPagoService: MercadoPagoService):
+        MercadoPagoRemoteDataSource = MercadoPagoRemoteDataSourceImpl(mercadoPagoService)
 }

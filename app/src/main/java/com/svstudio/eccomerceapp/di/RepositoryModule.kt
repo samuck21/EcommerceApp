@@ -10,13 +10,16 @@ import com.svstudio.eccomerceapp.data.dataSource.local.ShoppingBagLocalDataSourc
 import com.svstudio.eccomerceapp.data.dataSource.remote.AddressRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.AuthRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.CategoriesRemoteDataSource
+import com.svstudio.eccomerceapp.data.dataSource.remote.MercadoPagoRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.ProductsRemoteDataSource
 import com.svstudio.eccomerceapp.data.repository.AddressRepositoryImpl
+import com.svstudio.eccomerceapp.data.repository.MercadoPagoRepositoryImpl
 import com.svstudio.eccomerceapp.data.repository.ProductsRepositoryImpl
 import com.svstudio.eccomerceapp.data.repository.ShoppingBagRepositoryImpl
 import com.svstudio.eccomerceapp.domain.repository.AddressRepository
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
+import com.svstudio.eccomerceapp.domain.repository.MercadoPagoRepository
 import com.svstudio.eccomerceapp.domain.repository.ProductsRepository
 import com.svstudio.eccomerceapp.domain.repository.ShoppingBagRepository
 import dagger.Module
@@ -53,5 +56,10 @@ object RepositoryModule {
         addressRemoteDataSource: AddressRemoteDataSource,
         addressLocalDataSource: AddressLocalDataSource
     ): AddressRepository = AddressRepositoryImpl(addressRemoteDataSource,addressLocalDataSource)
+
+    @Provides
+    fun provideMercadoPagoRepository(
+        mercadoPagoRemoteDataSource: MercadoPagoRemoteDataSource
+    ): MercadoPagoRepository= MercadoPagoRepositoryImpl(mercadoPagoRemoteDataSource)
 
 }
