@@ -4,6 +4,7 @@ import com.svstudio.eccomerceapp.domain.repository.AddressRepository
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
 import com.svstudio.eccomerceapp.domain.repository.MercadoPagoRepository
+import com.svstudio.eccomerceapp.domain.repository.OrdersRepository
 import com.svstudio.eccomerceapp.domain.repository.ProductsRepository
 import com.svstudio.eccomerceapp.domain.repository.ShoppingBagRepository
 import com.svstudio.eccomerceapp.domain.usecase.address.AddressUseCase
@@ -27,6 +28,10 @@ import com.svstudio.eccomerceapp.domain.usecase.mercadopago.CreatePaymentUseCase
 import com.svstudio.eccomerceapp.domain.usecase.mercadopago.GetIdentificationTypeUseCase
 import com.svstudio.eccomerceapp.domain.usecase.mercadopago.GetInstallmentsUseCase
 import com.svstudio.eccomerceapp.domain.usecase.mercadopago.MercadoPagoUseCase
+import com.svstudio.eccomerceapp.domain.usecase.orders.FindAllOrdersUseCase
+import com.svstudio.eccomerceapp.domain.usecase.orders.FindByClientOrdersUseCase
+import com.svstudio.eccomerceapp.domain.usecase.orders.OrdersUseCase
+import com.svstudio.eccomerceapp.domain.usecase.orders.UpdateStatusOrdersUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.CreateProductUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.DeleteProductUseCase
 import com.svstudio.eccomerceapp.domain.usecase.products.FindAllUseCase
@@ -99,5 +104,13 @@ object UseCaseModule {
             getInstallments = GetInstallmentsUseCase(mercadoPagoRepository),
             createCardToken = CreateCardTokenUseCase(mercadoPagoRepository),
             createPayment = CreatePaymentUseCase(mercadoPagoRepository)
+        )
+
+    @Provides
+    fun provideOrdersUseCase(ordersRepository: OrdersRepository) =
+        OrdersUseCase(
+           findAllOrders = FindAllOrdersUseCase(ordersRepository),
+            findByClientOrders = FindByClientOrdersUseCase(ordersRepository),
+            updateStatusOrders = UpdateStatusOrdersUseCase(ordersRepository)
         )
 }

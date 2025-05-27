@@ -13,7 +13,8 @@ fun AdminBottomBar(navController: NavHostController){
     val screens = listOf(
        // AdminScreen.ProductList,
         AdminScreen.CategoryList,
-        AdminScreen.Profile
+        AdminScreen.Profile,
+        AdminScreen.OrderList
     )
     val navBackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackEntry?.destination

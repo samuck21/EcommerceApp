@@ -1,6 +1,7 @@
 package com.svstudio.eccomerceapp.presentation.navigation.screen.admin
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ThumbUp
@@ -16,6 +17,11 @@ sealed class AdminScreen (
         route = "admin/category/list",
         title = "Categorias",
         icon = Icons.Default.List
+    )
+    object  OrderList: AdminScreen(
+        route = "admin/order/list",
+        title = "Pedidos",
+        icon = Icons.Default.Info
     )
 //    object  ProductList: AdminScreen(
 //        route = "admin/product/list",

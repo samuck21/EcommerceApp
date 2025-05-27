@@ -4,7 +4,9 @@ import com.svstudio.eccomerceapp.data.dataSource.remote.service.AddressService
 import com.svstudio.eccomerceapp.data.dataSource.remote.service.AuthService
 import com.svstudio.eccomerceapp.data.dataSource.remote.service.CategoriesService
 import com.svstudio.eccomerceapp.data.dataSource.remote.service.MercadoPagoService
+import com.svstudio.eccomerceapp.data.dataSource.remote.service.OrdersService
 import com.svstudio.eccomerceapp.data.dataSource.remote.service.ProductsService
+import com.svstudio.eccomerceapp.domain.model.Order
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -51,6 +53,11 @@ object NetworkModule {
     @Singleton
     fun provideMercadoPagoService(retrofit: Retrofit): MercadoPagoService {
         return retrofit.create(MercadoPagoService::class.java)
+    }
+    @Provides
+    @Singleton
+    fun provideOrderService(retrofit: Retrofit): OrdersService {
+        return retrofit.create(OrdersService::class.java)
     }
 
 }
