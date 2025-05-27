@@ -16,6 +16,9 @@ interface ShoppingBagDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(product: List<ShoppingBagProductEntity>)
 
+    @Query("SELECT SUM(quantity * price) FROM shopping_bag" )
+    suspend fun getTotal(): Double
+
     @Query("SELECT * FROM shopping_bag")
     fun findAll(): Flow<List<ShoppingBagProductEntity>>
 

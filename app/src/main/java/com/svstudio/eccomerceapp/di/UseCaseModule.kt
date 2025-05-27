@@ -22,6 +22,8 @@ import com.svstudio.eccomerceapp.domain.usecase.categories.DeleteCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.GetCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryUseCase
 import com.svstudio.eccomerceapp.domain.usecase.categories.UpdateCategoryWithImageUseCase
+import com.svstudio.eccomerceapp.domain.usecase.mercadopago.CreateCardTokenUseCase
+import com.svstudio.eccomerceapp.domain.usecase.mercadopago.CreatePaymentUseCase
 import com.svstudio.eccomerceapp.domain.usecase.mercadopago.GetIdentificationTypeUseCase
 import com.svstudio.eccomerceapp.domain.usecase.mercadopago.GetInstallmentsUseCase
 import com.svstudio.eccomerceapp.domain.usecase.mercadopago.MercadoPagoUseCase
@@ -36,6 +38,7 @@ import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.AddUseCase
 import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.DeleteUseCase
 import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.FindAllShoppingBagUseCase
 import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.FindByIdShoppingBagUseCase
+import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.GetTotalUseCase
 import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.ShoppingBagUseCase
 import dagger.Module
 import dagger.Provides
@@ -79,7 +82,8 @@ object UseCaseModule {
             add = AddUseCase(shoppingBagRepository),
             delete = DeleteUseCase(shoppingBagRepository),
             findAll = FindAllShoppingBagUseCase(shoppingBagRepository),
-            findById = FindByIdShoppingBagUseCase(shoppingBagRepository)
+            findById = FindByIdShoppingBagUseCase(shoppingBagRepository),
+            getTotal = GetTotalUseCase(shoppingBagRepository)
 
         )
     @Provides
@@ -92,6 +96,8 @@ object UseCaseModule {
     fun provideMercadoPagoUseCase(mercadoPagoRepository: MercadoPagoRepository) =
         MercadoPagoUseCase(
             getIdentificationType = GetIdentificationTypeUseCase(mercadoPagoRepository),
-            getInstallments = GetInstallmentsUseCase(mercadoPagoRepository)
+            getInstallments = GetInstallmentsUseCase(mercadoPagoRepository),
+            createCardToken = CreateCardTokenUseCase(mercadoPagoRepository),
+            createPayment = CreatePaymentUseCase(mercadoPagoRepository)
         )
 }

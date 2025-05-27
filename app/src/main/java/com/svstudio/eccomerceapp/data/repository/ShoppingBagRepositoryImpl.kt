@@ -45,4 +45,6 @@ class ShoppingBagRepositoryImpl(private  val localDataSource: ShoppingBagLocalDa
         }
       return data
     }
+
+    override suspend fun getTotal(): Double  = localDataSource.getTotal()
 }

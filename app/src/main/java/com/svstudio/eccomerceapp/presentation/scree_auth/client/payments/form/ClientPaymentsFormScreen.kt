@@ -6,12 +6,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.svstudio.eccomerceapp.presentation.scree_auth.client.payments.form.componets.ClientPaymentsFormContent
+import com.svstudio.eccomerceapp.presentation.scree_auth.client.payments.form.componets.GetIdentificationTypes
 
 @Composable
 fun ClientPaymentsFormScreen (navController: NavHostController, vm: ClientPaymentsFormViewModel = hiltViewModel()) {
-    //vm.getInstallemts
+   // vm.getInstallemts(vm.car)
     Scaffold () {paddingValues ->
 
-        ClientPaymentsFormContent(paddingValues)
+        GetIdentificationTypes(paddingValues,navController)
     }
 }

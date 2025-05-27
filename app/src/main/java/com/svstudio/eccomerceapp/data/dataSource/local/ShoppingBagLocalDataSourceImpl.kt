@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 class ShoppingBagLocalDataSourceImpl(private val shoppingBagDao: ShoppingBagDao) : ShoppingBagLocalDataSource {
     override suspend fun insert(product: ShoppingBagProductEntity) = shoppingBagDao.insert(product)
     override suspend fun insertAll(products: List<ShoppingBagProductEntity>) = shoppingBagDao.insertAll(products)
+    override suspend fun getTotal(): Double = shoppingBagDao.getTotal()
     override fun findAll(): Flow<List<ShoppingBagProductEntity>>  = shoppingBagDao.findAll()
     override fun findById(id: String): ShoppingBagProductEntity = shoppingBagDao.findById(id)
 
