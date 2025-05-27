@@ -13,6 +13,7 @@ fun ClientBottomBar(navController: NavHostController){
     val screen = listOf(
         ClientScreen.ProductList,
         ClientScreen.CategoryList,
+        ClientScreen.OrderList,
         ClientScreen.Profile
     )
     val navBackEntry by navController.currentBackStackEntryAsState()
