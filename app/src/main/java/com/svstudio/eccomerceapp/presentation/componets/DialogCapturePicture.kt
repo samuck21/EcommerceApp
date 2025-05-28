@@ -1,5 +1,6 @@
 package com.svstudio.eccomerceapp.presentation.componets
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -39,7 +40,8 @@ fun DialogCapturePicture(
                Row(
                    modifier = Modifier
                        .fillMaxWidth()
-                       .padding(vertical = 30.dp)
+                       .padding(vertical = 30.dp),
+                   horizontalArrangement = Arrangement.SpaceEvenly
                ) {
                    Button(
                        modifier = Modifier.width(130.dp),

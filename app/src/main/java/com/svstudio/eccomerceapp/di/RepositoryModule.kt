@@ -13,11 +13,13 @@ import com.svstudio.eccomerceapp.data.dataSource.remote.CategoriesRemoteDataSour
 import com.svstudio.eccomerceapp.data.dataSource.remote.MercadoPagoRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.OrdersRemoteDataSource
 import com.svstudio.eccomerceapp.data.dataSource.remote.ProductsRemoteDataSource
+import com.svstudio.eccomerceapp.data.dataSource.remote.UsersRemoteDataSource
 import com.svstudio.eccomerceapp.data.repository.AddressRepositoryImpl
 import com.svstudio.eccomerceapp.data.repository.MercadoPagoRepositoryImpl
 import com.svstudio.eccomerceapp.data.repository.OrdersRepositoryImpl
 import com.svstudio.eccomerceapp.data.repository.ProductsRepositoryImpl
 import com.svstudio.eccomerceapp.data.repository.ShoppingBagRepositoryImpl
+import com.svstudio.eccomerceapp.data.repository.UsersRepositoryImpl
 import com.svstudio.eccomerceapp.domain.repository.AddressRepository
 import com.svstudio.eccomerceapp.domain.repository.AuthRepository
 import com.svstudio.eccomerceapp.domain.repository.CategoriesRepository
@@ -25,6 +27,7 @@ import com.svstudio.eccomerceapp.domain.repository.MercadoPagoRepository
 import com.svstudio.eccomerceapp.domain.repository.OrdersRepository
 import com.svstudio.eccomerceapp.domain.repository.ProductsRepository
 import com.svstudio.eccomerceapp.domain.repository.ShoppingBagRepository
+import com.svstudio.eccomerceapp.domain.repository.UsersRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -68,5 +71,10 @@ object RepositoryModule {
     fun provideOrdersRepository(
         ordersRemoteDataSource: OrdersRemoteDataSource
     ): OrdersRepository= OrdersRepositoryImpl(ordersRemoteDataSource)
+
+    @Provides
+    fun provideUsersRepository(
+        usersRemoteDataSource: UsersRemoteDataSource,
+    ): UsersRepository = UsersRepositoryImpl(usersRemoteDataSource)
 
 }

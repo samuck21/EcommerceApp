@@ -6,6 +6,7 @@ data class RegisterState(
     val email: String = "",
     val phone: String = "",
     val password: String = "",
+    val image: String = "",
     val confirmPassword: String = ""
 
 

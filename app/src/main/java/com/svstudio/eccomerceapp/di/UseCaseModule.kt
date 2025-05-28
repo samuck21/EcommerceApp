@@ -7,6 +7,7 @@ import com.svstudio.eccomerceapp.domain.repository.MercadoPagoRepository
 import com.svstudio.eccomerceapp.domain.repository.OrdersRepository
 import com.svstudio.eccomerceapp.domain.repository.ProductsRepository
 import com.svstudio.eccomerceapp.domain.repository.ShoppingBagRepository
+import com.svstudio.eccomerceapp.domain.repository.UsersRepository
 import com.svstudio.eccomerceapp.domain.usecase.address.AddressUseCase
 import com.svstudio.eccomerceapp.domain.usecase.address.CreateAddressUseCase
 import com.svstudio.eccomerceapp.domain.usecase.address.FindByUserAddressUseCase
@@ -45,6 +46,9 @@ import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.FindAllShoppingBagU
 import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.FindByIdShoppingBagUseCase
 import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.GetTotalUseCase
 import com.svstudio.eccomerceapp.domain.usecase.shopping_bag.ShoppingBagUseCase
+import com.svstudio.eccomerceapp.domain.usecase.users.UpdateUserUseCase
+import com.svstudio.eccomerceapp.domain.usecase.users.UpdateUserWithImageUseCase
+import com.svstudio.eccomerceapp.domain.usecase.users.UsersUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -62,6 +66,13 @@ object UseCaseModule {
         logout = LogoutUseCase(authRepository),
         updateSession = UpdateSessionUseCase(authRepository)
     )
+
+    @Provides
+    fun provideUsersUseCase(usersRepository: UsersRepository) = UsersUseCase(
+        updateUser = UpdateUserUseCase(usersRepository),
+        updateUserWithImage = UpdateUserWithImageUseCase(usersRepository)
+    )
+
     @Provides
     fun provideCategoriesUseCase(categoriesRepository: CategoriesRepository) = CategoriesUseCase(
         createCategory = CreateCategoryUseCase(categoriesRepository),

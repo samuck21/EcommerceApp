@@ -117,7 +117,7 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, navController: NavHostCon
                     DefaultTextField(
                         modifier = Modifier,
                         value = state.lastname,
-                        onValueChange = {vm.onLastNameInput(it)},
+                        onValueChange = {vm.onLastnameInput(it)},
                         label = "Apellidos",
                         icon = Icons.Filled.Person ,
                         keyboardType = KeyboardType.Unspecified
@@ -132,6 +132,7 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, navController: NavHostCon
                     )
                     Button(
                         onClick = {
+                            vm.update()
                            // navController.navigate(route = "${Graph.PROFILE}/${vm.user?.toJson()}")
                         },
                         modifier = Modifier

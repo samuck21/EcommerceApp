@@ -10,6 +10,7 @@ import com.svstudio.eccomerceapp.domain.model.AuthResponse
 import com.svstudio.eccomerceapp.domain.model.User
 import com.svstudio.eccomerceapp.domain.until.Resource
 import com.svstudio.eccomerceapp.domain.usecase.auth.AuthUseCase
+import com.svstudio.eccomerceapp.presentation.scree_auth.register.mapper.toUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,15 +27,9 @@ class RegisterViewModel @Inject constructor(private  val authUseCase: AuthUseCas
 
     fun register() = viewModelScope.launch {
         if(isValidForm()) {
-            val user = User(
-                name = state.name,
-                lastname = state.lastname,
-                phone = state.phone,
-                email = state.email,
-                password = state.password
-            )
+
             registerResponse = Resource.Loading
-            val result = authUseCase.register(user)
+            val result = authUseCase.register(state.toUser())
             registerResponse = result
         }
 

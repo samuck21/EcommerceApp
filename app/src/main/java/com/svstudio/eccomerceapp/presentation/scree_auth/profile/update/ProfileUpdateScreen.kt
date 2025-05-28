@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.svstudio.eccomerceapp.presentation.navigation.Graph
 import com.svstudio.eccomerceapp.presentation.scree_auth.profile.update.componets.ProfileUpdateContent
+import com.svstudio.eccomerceapp.presentation.scree_auth.profile.update.componets.UpdateUser
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,5 +37,6 @@ fun ProfileUpdateScreen(navController: NavHostController,userParam: String) {
     ) {
         ProfileUpdateContent(it,navController)
     }
+    UpdateUser()
 
 }
