@@ -14,7 +14,6 @@ import com.svstudio.eccomerceapp.presentation.scree_auth.roles.componets.RolesCo
 
 fun RolesScreen(navController: NavHostController){
     Scaffold (
-        topBar =  { TopAppBar( title = { Text("Selecciona un rol") }) }
 
     ) { paddingValues ->
         RolesContent(paddingValues, navController)

@@ -1,12 +1,17 @@
 package com.svstudio.eccomerceapp.presentation.scree_auth.admin.home.componets
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.Text
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -35,7 +40,10 @@ fun RowScope.AdminBottomBarItem(
           navController.navigate(route = screen.route){
               popUpTo(navController.graph.findStartDestination().id)
           }
-      }
+      },
+      modifier = Modifier.background(Color.Black)
+
 
   )
+
 }

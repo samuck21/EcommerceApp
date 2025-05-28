@@ -1,4 +1,4 @@
-package com.svstudio.eccomerceapp.domain.model
+  package com.svstudio.eccomerceapp.domain.model
 
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
