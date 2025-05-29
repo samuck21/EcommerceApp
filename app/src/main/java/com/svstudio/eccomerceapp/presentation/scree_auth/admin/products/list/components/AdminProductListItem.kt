@@ -36,7 +36,7 @@ import com.svstudio.eccomerceapp.presentation.scree_auth.admin.products.list.Adm
 
 @Composable
 fun AdminProductListItem(navController: NavHostController, product: Product, vm: AdminProductListViewModel= hiltViewModel()){
-    Column (modifier = Modifier.padding(top = 20.dp
+    Column (modifier = Modifier.padding(top = 1.dp
     )){
         ElevatedCard(
             elevation = CardDefaults.cardElevation(
@@ -49,19 +49,12 @@ fun AdminProductListItem(navController: NavHostController, product: Product, vm:
         ) {
             Column {
                 Row(Modifier.padding(10.dp).fillMaxWidth()) {
-                    Text("Fecha",
-                        Modifier.weight(1f),
+                    Text("Fecha:",
+                        Modifier.weight(6f),
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp,
                         textAlign = TextAlign.Start )
-                    Text("Volver a compar",
-                        Modifier.weight(1f)
-                            .clickable{
-                                navController.navigate(route = AdminCategoryScreen.ProductUpdate.passProduct(vm.category.toJson()))
-                            },
-                        fontSize = 20.sp,
-                        color = Color.Blue,
-                        textAlign = TextAlign.End)
+
                     Icon(
                         imageVector = Icons.Default.Edit,
                         contentDescription = "",
@@ -73,7 +66,8 @@ fun AdminProductListItem(navController: NavHostController, product: Product, vm:
                                     route = AdminCategoryScreen.ProductUpdate.passProduct(product.toJson())
                                 )
 
-                            }
+                            },
+                        tint = Color.Blue
                     )
                     Icon(
                         imageVector = Icons.Default.Delete,
@@ -83,7 +77,8 @@ fun AdminProductListItem(navController: NavHostController, product: Product, vm:
                             .weight(1f)
                             .clickable{
                               vm.deleteProduct(product.id ?:"")
-                            }
+                            },
+                        tint = Color.Red
                     )
                 }
                 Divider(thickness = 2.dp,
@@ -92,7 +87,7 @@ fun AdminProductListItem(navController: NavHostController, product: Product, vm:
                         .padding(start = 10.dp, end = 10.dp)
                         .fillMaxWidth())
                 Row (modifier = Modifier.padding(10.dp)) {
-                    Column(Modifier.weight(3f)) {
+                    Column(Modifier.weight(4f)) {
                         Text(text = product.name,
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold)

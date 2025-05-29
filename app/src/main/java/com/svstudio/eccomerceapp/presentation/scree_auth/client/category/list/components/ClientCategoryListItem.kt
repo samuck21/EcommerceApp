@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -34,7 +35,7 @@ fun ClientCategoryListItem(navController: NavHostController,category: Category){
         ),
         modifier = Modifier
             .height(250.dp)
-            .padding(start = 10.dp, end = 5.dp, top = 5.dp)
+            .padding(start = 10.dp, end = 5.dp, top = 14.dp)
             .clickable{
                 navController.navigate(route = ClientCategoryScreen.ProductList.passCategory(category.toJson()))
             }
@@ -47,15 +48,17 @@ fun ClientCategoryListItem(navController: NavHostController,category: Category){
 
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter){
                 Column (horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text("Tenis",
+                    Divider(thickness = 3.dp, color = Color.White, modifier = Modifier.padding(start = 35.dp, end = 35.dp))
+                    Text(text = category.name,
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        textAlign = TextAlign.Center
 
                     )
-                    Divider(thickness = 3.dp, color = Color.White, modifier = Modifier.padding(start = 35.dp, end = 35.dp))
-                    Text("Descripcion",
-                        color = Color.White,)
+
+                    //Text("Descripcion",
+                       // color = Color.White,)
                 }
             }
 

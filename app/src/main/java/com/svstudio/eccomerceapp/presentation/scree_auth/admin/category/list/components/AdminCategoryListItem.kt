@@ -46,7 +46,7 @@ fun AdminCategoryListItem(navController: NavHostController,category: Category, v
             .background(Color.White)
             .fillMaxSize()
     ) {
-        Column(Modifier.padding(top = 30.dp, start = 20.dp, end = 20.dp)
+        Column(Modifier.padding(top = 5.dp, start = 20.dp, end = 20.dp)
             .clickable{
                 navController.navigate(route = AdminCategoryScreen.ProductList.passCategory(category.toJson()))
             }) {
@@ -55,12 +55,12 @@ fun AdminCategoryListItem(navController: NavHostController,category: Category, v
                     defaultElevation = 6.dp
                 ),
                 modifier = Modifier
-                    .height(200.dp)
+                    .height(250.dp)
                     .fillMaxWidth()
                     .padding(top = 20.dp)
             ) {
                 Column(Modifier.fillMaxWidth()) {
-                    Box(modifier = Modifier.weight(2f)) {
+                    Box(modifier = Modifier.weight(4f)) {
 
                         AsyncImage(
                             model = category.image,
