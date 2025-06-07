@@ -33,7 +33,6 @@ fun ClientShoppingBagBottonBar(navController: NavHostController,vm: ClientShoppi
             modifier = Modifier.run { padding(vertical = 15.dp) },
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Hola")
             Text(
                 text = "TOTAL",
                 fontWeight = FontWeight.Bold,
