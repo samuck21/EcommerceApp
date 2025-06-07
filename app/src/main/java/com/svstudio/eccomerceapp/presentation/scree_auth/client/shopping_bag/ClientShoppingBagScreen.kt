@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -31,11 +33,17 @@ fun ClientShoppingBagScreen(navController: NavHostController, vm: ClientShopping
     vm.getShoppingBag()
     Scaffold(
         topBar = {
-            Icon( imageVector = Icons.Default.ArrowBack,
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowLeft,
                 contentDescription = "",
-                modifier = Modifier.clickable{
-
-                })
+                modifier = Modifier
+                    .size(90.dp)
+                    .padding(20.dp)
+                    .clickable{
+                        navController.popBackStack()
+                    },
+                tint = Color.Black
+            )
         },
         bottomBar = {
             ClientShoppingBagBottonBar(navController)

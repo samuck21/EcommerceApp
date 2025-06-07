@@ -41,7 +41,7 @@ class ClientAddressCreateViewModel @Inject  constructor(
         state = state.copy(address =  address)
     }
     fun onNeighborhoodInput(neighborhood: String){
-        state = state.copy(neighborhood)
+        state = state.copy(neigborhood = neighborhood)
     }
     fun clearForm(){
         state = state.copy(

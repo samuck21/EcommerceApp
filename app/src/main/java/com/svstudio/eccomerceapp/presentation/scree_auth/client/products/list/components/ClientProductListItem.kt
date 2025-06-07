@@ -2,8 +2,10 @@ package com.svstudio.eccomerceapp.presentation.scree_auth.client.products.list.c
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -12,12 +14,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -38,7 +42,7 @@ import com.svstudio.eccomerceapp.presentation.scree_auth.client.products.list.Cl
 
 @Composable
 fun ClientProductListItem(navController: NavHostController, product: Product, vm: ClientProductListViewModel= hiltViewModel()){
-    Column (modifier = Modifier.padding(top = 20.dp
+    Column (modifier = Modifier.padding(top =5.dp
     )
         .clickable{
             navController.navigate(route = ClientCategoryScreen.ProductDetail.passCategory(product.toJson()) )
@@ -47,51 +51,76 @@ fun ClientProductListItem(navController: NavHostController, product: Product, vm
     ){
         ElevatedCard(
             elevation = CardDefaults.cardElevation(
-                defaultElevation = 6.dp
+                defaultElevation = 16.dp
             ),
             modifier = Modifier
                 .fillMaxWidth()
-                .height(180.dp)
-                .padding(10.dp)
+                .height(420.dp)
+                .padding(5.dp)
         ) {
-            Column {
-                Row(Modifier.padding(10.dp).fillMaxWidth()) {
-                    Text("Fecha",
-                        Modifier.weight(1f),
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp,
-                        textAlign = TextAlign.Start )
-                    Text("Volver a compar",
-                        Modifier.weight(1f),
+            Column(
 
-                        fontSize = 20.sp,
-                        color = Color.Blue,
-                        textAlign = TextAlign.End)
+            ) {
+                Box(Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+                    .weight(2f)) {
 
-                }
-                Divider(thickness = 2.dp,
-                    color = Color.LightGray,
-                    modifier = Modifier
-                        .padding(start = 10.dp, end = 10.dp)
-                        .fillMaxWidth())
-                Row (modifier = Modifier.padding(10.dp)) {
-                    Column(Modifier.weight(3f)) {
-                        Text(text = product.name,
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold)
-                        Text(text = product.description)
-                        Text(text = product.price.toString(),fontSize = 15.sp)
-                        Text("3 productos",fontSize = 15.sp)
-                    }
                     AsyncImage( model = product.image1,
                         contentScale = ContentScale.Crop,
                         contentDescription = "",
                         modifier =
-                            Modifier.size(height = 100.dp, width = 80.dp)
-                                .weight(1f)
+                            Modifier
+                                .fillMaxSize()
+                    )
+                    Icon(
+                        imageVector = Icons.Default.Favorite,
+                        contentDescription = "",
+                        tint = Color.LightGray,
+                        modifier = Modifier
+                            .align(Alignment.TopEnd)
+                            .padding(10.dp)
+                            .size(30.dp)
                     )
 
                 }
+
+
+
+                Column(Modifier.weight(1f)) {
+                    Text(text = product.name,
+                        fontSize = 25.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Start,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 10.dp, bottom = 2.dp)
+                    )
+                    Text(text = product.description,
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Normal,
+                        textAlign = TextAlign.Start,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 10.dp, bottom = 2.dp)
+                    )
+                    Text(text = "$ "+product.price.toString(),
+                        fontSize = 30.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Start,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 10.dp, bottom = 2.dp)
+                    )
+                    Text("3 productos",
+                        fontSize = 15.sp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 10.dp, bottom = 2.dp))
+                }
+
+
+
             }
         }
     }
